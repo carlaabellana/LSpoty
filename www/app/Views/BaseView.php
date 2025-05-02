@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= $this->renderSection('title') ?></title>
-    <?= $this->renderSection('css') ?>
+    <?= $this->renderSection('CSS') ?>
     <style>
         body{
             margin: 0;
@@ -30,6 +30,7 @@
             position: fixed;
             top: 0;
             width: 100%;
+            z-index: 1000;
         }
 
     </style>

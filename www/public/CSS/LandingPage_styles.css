@@ -1,0 +1,304 @@
+/* Variables */
+:root {
+    --gap: 20px;
+    --radius: 40px;
+    --bg: #f9f7f3;
+    /*Buttons Variables*/
+    --primary-color: #e2979b;
+    --primary-color-dark: #b4818a;
+    --btn-radius: 4px;
+    --btn-padding: 0.75rem 1.5rem;
+}
+
+/*Reset & Base*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #111;
+    line-height: 1.6;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*LSpoty-introduction Section*/
+.LSpoty-introduction {
+    padding: 60px 0;
+}
+
+.LSpoty-introduction-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.LSpoty-introduction-text {
+    flex: 1 1 400px;
+}
+
+.LSpoty-introduction-title {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.LSpoty-introduction-subtitle {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.socialMedia-links {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.socialMedia-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #111;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+    font-size: 14px;
+}
+
+.statistics {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.statistic {
+    max-width: 250px;
+}
+
+.statistics-number {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.statistics-label {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.LSpoty-introduction-image {
+    position: relative;
+    flex: 1 1 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 0 2em;
+}
+
+.LSpoty-introduction-image img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.signature {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+
+/*Buttons to register and login*/
+.register-buttons {
+     display: flex;
+     gap: 1rem;
+     margin: 2rem 0;
+}
+
+/* Base button styling */
+.register-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.register-buttons .btn {
+    display: inline-block;
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+/* Both buttons now filled */
+.register-buttons .sign-in,
+.register-buttons .sign-up {
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.register-buttons .sign-in:hover,
+.register-buttons .sign-up:hover {
+    background: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+
+/* LSpoty-about Section */
+.LSpoty-about-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.LSpoty-about-content img {
+    flex-shrink: 0;
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-top: 1em;
+}
+
+.LSpoty-about-text {
+    flex: 1;
+}
+
+/*Styles for the list of features*/
+.LSpoty-about-features {
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem 2rem;
+}
+
+.LSpoty-about-features li {
+    position: relative;
+    padding-left: 1.8em;
+    line-height: 1.5;
+    color: #333;
+}
+
+/*LSpoty bullet customization*/
+.LSpoty-about-features li::before {
+    content: '🎵';
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    font-size: 1em;
+}
+
+/*LSpoty music portfolio grid*/
+.LSpoty-portfolio {
+    display: grid;
+    justify-content: center;
+}
+
+.LSpoty-portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--gap);
+    width: 90vw;
+    max-width: 1200px;
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
+
+.LSpoty-portfolio-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Outer-corner rounding */
+.item1 img { border-top-left-radius: var(--radius); }
+.item2 img { border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+.item3 img { border-top-right-radius: var(--radius); }
+.item4 img { border-bottom-left-radius: var(--radius); }
+.item6 img { border-bottom-right-radius: var(--radius); }
+
+/* Card Overlay */
+.LSpoty-portfolio-grid .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.LSpoty-portfolio-grid .card img {
+    width: 100%;
+    height: auto;
+    transition: transform .3s ease;
+}
+
+.LSpoty-portfolio-grid .card:hover img {
+    transform: scale(1.05);
+}
+
+.LSpoty-portfolio-grid .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .5rem;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.LSpoty-portfolio-grid .card:hover .card-overlay {
+    opacity: 1;
+}
+
+.LSpoty-portfolio-grid .card-overlay h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .LSpoty-introduction-content,
+    .LSpoty-about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .LSpoty-introduction-title {
+        font-size: 48px;
+    }
+
+    .LSpoty-about-content img {
+        width: 80%;
+        margin: 0 auto 1rem;
+    }
+}
