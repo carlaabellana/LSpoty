@@ -21,8 +21,8 @@
                 <p class="LSpoty-introduction-subtitle"><?= lang('landing.subtitle') ?></p>
 
                 <div class="register-buttons">
-                    <a href="/sign-in" class="btn sign-in"><?= lang('landing.btn_signin') ?></a>
-                    <a href="/sign-up" class="btn sign-up"><?= lang('landing.btn_register') ?></a>
+                    <a href="<?= route_to('sign-in.get') ?>" class="btn sign-in"><?= lang('landing.btn_signin') ?></a>
+                    <a href="<?= route_to('sign-up.get') ?>" class="btn sign-up"><?= lang('landing.btn_register') ?></a>
                 </div>
 
                 <!--Links to the social media of LSpoty.-->

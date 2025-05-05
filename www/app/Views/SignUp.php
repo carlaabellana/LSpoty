@@ -9,7 +9,7 @@ Sign Up | LSpoty
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<form method="post" action="/sign-up">
+<form method="post" action="<?= route_to('sign-up.post') ?>">
     <h1><?= lang('register.title_register') ?></h1>
     <label><?= lang('register.email_form') ?></label>
     <input type="text" name="email" value="<?= esc($old['email'] ?? '') ?>">
@@ -31,7 +31,7 @@ Sign Up | LSpoty
     <button type="submit"><?= lang('register.btn_form') ?> </button>
 
     <div class="register-link">
-        <p><?= lang('register.yes_account') ?><a href="<?= site_url('sign-in') ?>"><?= lang('register.login_here') ?> </a></p>
+        <p><?= lang('register.yes_account') ?><a href="<?= route_to('sign-in.get') ?>"><?= lang('register.login_here') ?> </a></p>
     </div>
 
 </form>

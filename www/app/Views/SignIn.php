@@ -16,7 +16,7 @@
     </div>
 <?php endif; ?>
 
-<form method="post" action="/sign-in">
+<form method="post" action="<?= route_to('sign-in.post') ?>">
     <h1>Sign In | LSpoty </h1>
 
     <label><?= lang('register.email_form') ?></label>
@@ -34,7 +34,7 @@
     <button type="submit"><?= lang('register.btn_login') ?></button>
 
     <div class="register-link">
-        <p><?= lang('register.no_account') ?><a href="<?= site_url('sign-up') ?>"><?= lang('register.register_here') ?> </a></p>
+        <p><?= lang('register.no_account') ?><a href="<?= route_to('sign-up.get') ?>"><?= lang('register.register_here') ?> </a></p>
     </div>
 
 </form>

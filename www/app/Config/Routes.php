@@ -8,11 +8,35 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('/', 'Home::index');
 
 $routes->group('/', ['namespace' => 'App\Controllers'], function ($routes) {
-    $routes->get('', 'LandingPage_Controller');
+    $routes->get('', 'LandingPage_Controller', ['as' => 'landing-page.get']);
 });
 
-$routes ->get('/sign-up', 'AuthController::signUp');
-$routes->post('/sign-up', 'AuthController::handleSignUp');
+$routes->group('sign-up', ['namespace' => 'App\Controllers'], function ($routes) {
+    $routes ->get('', 'AuthController::signUp', ['as' => 'sign-up.get']);
+    $routes->post('', 'AuthController::handleSignUp', ['as' => 'sign-up.post']);
+});
 
-$routes->get('/sign-in', 'AuthController::signIn');
-$routes->post('/sign-in', 'AuthController::handleSignIn');
+$routes->group('sign-in', ['namespace' => 'App\Controllers'], function ($routes) {
+    $routes->get('', 'AuthController::signIn', ['as' => 'sign-in.get']);
+    $routes->post('', 'AuthController::handleSignIn', ['as' => 'sign-in.post']);
+});
+
+$routes->group('home', ['namespace' => 'App\Controllers'], function ($routes) {
+    $routes->get('', 'AuthController::signIn', ['as' => 'home.get']);
+});
+
+$routes->group('profile', ['namespace' => 'App\Controllers'], function ($routes) {
+    $routes->get('', 'AuthController::signIn', ['as' => 'profile.get']);
+    $routes->post('', 'AuthController::handleSignIn', ['as' => 'profile.post']);
+});
+
+//Faltan las de artist
+//Faltan las de album
+//Faltan las de playlist
+//Faltan las de my playlist
+
+$routes->group('create-playlist', ['namespace' => 'App\Controllers'], function ($routes) {
+    $routes->get('', 'PlaylistController::create', ['as' => 'playlist.create']);
+    $routes->post('', 'PlaylistController::store', ['as' => 'playlist.store']);
+});
+//Faltan my playlist management

@@ -69,7 +69,7 @@ class AuthController extends BaseController
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'money' => $money
         ]);
-        return redirect()->to('/sign-in')->with('message', lang('register.account_created'));
+        return redirect()->route('sign-in.get')->with('message', lang('register.account_created'));
     }
     public function signIn()
     {
@@ -111,7 +111,7 @@ class AuthController extends BaseController
         $session = session();
         $session->set('email', $email);
 
-        return redirect()->to('/');
+        return redirect()->route('landing-page.get');
     }
     public function deleteAccount()
     {
@@ -123,8 +123,8 @@ class AuthController extends BaseController
             $userModel->where('email', $email)->delete();
 
             $session->destroy();
-            return redirect()->to('/')->with('message', lang('register.account_deleted'));
+            return redirect()->route('landing-page.get')->with('message', lang('register.account_deleted'));
         }
-        return redirect()->to('/')->with('message', lang('account_delete_failed'));
+        return redirect()->route('landing-page.get')->with('message', lang('account_delete_failed'));
     }
 }
