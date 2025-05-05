@@ -9,8 +9,16 @@ class AuthController extends BaseController
 {
     public function signUp()
     {
+        $form_labels = [
+            'title'          => lang('register.title_register'),
+            'email_label'    => lang('register.email_form'),
+            'password_label' => lang('register.password_form'),
+            'repeat_label'   => lang('register.repeat_form'),
+            'btn_register'   => lang('register.btn_form'),
+        ];
         return view('signUp', [
             'validation' => \Config\Services::validation(),
+            'labels'     => $form_labels,
         ]);
     }
     public function handleSignUp()
@@ -26,37 +34,27 @@ class AuthController extends BaseController
 
 
         if (empty($email)) {
-            $errors['email'] = "The email address is not valid.";
+            $errors['email'] = lang('register.email_invalid');
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "The email address is not valid.";
+            $errors['email'] = lang('register.email_invalid');
         } elseif (!preg_match('/@(students\.salle\.url\.edu|ext\.salle\.url\.edu|salle\.url\.edu)$/', $email)) {
-            $errors['email'] = "Only emails from the domain @students.salle.url.edu, @ext.salle.url.edu or @salle.url.edu are accepted.";
+            $errors['email'] = lang('register.email_domain');
         } else {
             if ($userModel->where('email', $email)->first()) {
-                $errors['email'] = "The email address is already registered.";
+                $errors['email'] = lang('register.email_registered');
             }
         }
 
         if (empty($password)) {
-            $errors['password'] = "The password must contain at least 8 characters.";
+            $errors['password'] = lang('register.password_short');
         } elseif (strlen($password) < 8) {
-            $errors['password'] = "The password must contain at least 8 characters.";
+            $errors['password'] = lang('register.password_short');
         } elseif (!preg_match('/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/', $password)) {
-            $errors['password'] = "The password must contain both upper and lower case letters and numbers.";
+            $errors['password'] = lang('register.password_weak');
         }
 
         if ($repeatPassword !== $password) {
-            $errors['repeat_password'] = "Passwords do not match.";
-        }
-
-        if (!empty($money)) {
-            if (!is_numeric($money)) {
-                $errors['money'] = "Sorry, the money field must be a number.";
-            } elseif ($money < 0 || $money > 2000) {
-                $errors['money'] = "Sorry, the amount of money is either below or above the limits.";
-            }
-        } else {
-            $money = 0;
+            $errors['repeat_password'] = lang('register.repeat_mismatch');
         }
 
         if (!empty($errors)) {
@@ -71,14 +69,22 @@ class AuthController extends BaseController
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'money' => $money
         ]);
-        return redirect()->to('/sign-in')->with('message', 'Account created! You can now log in.');
+        return redirect()->to('/sign-in')->with('message', lang('register.account_created'));
     }
     public function signIn()
     {
+        $form_labels = [
+            'title'          => lang('register.title_register'),
+            'email_label'    => lang('register.email_form'),
+            'password_label' => lang('register.password_form'),
+            'btn_login'   => lang('register.btn_login'),
+        ];
+
         return view('signIn', [
             'errors' => session()->getFlashdata('errors'),
             'old' => session()->getFlashdata('old'),
-            'message' => session()->getFlashdata('message')
+            'message' => session()->getFlashdata('message'),
+            'form_labels' => $form_labels,
         ]);
     }
 
@@ -117,8 +123,8 @@ class AuthController extends BaseController
             $userModel->where('email', $email)->delete();
 
             $session->destroy();
-            return redirect()->to('/')->with('message', 'Your account has been deleted.');
+            return redirect()->to('/')->with('message', lang('register.account_deleted'));
         }
-        return redirect()->to('/')->with('message', 'Unable to delete account.');
+        return redirect()->to('/')->with('message', lang('account_delete_failed'));
     }
 }
