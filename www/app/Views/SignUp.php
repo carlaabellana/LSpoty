@@ -1,7 +1,7 @@
 <?= $this->extend('BaseView') ?>
 
 <?= $this->section('title') ?>
-Sign Up | LSpoty
+    Sign Up | LSpoty
 <?= $this->endSection() ?>
 
 <?= $this->section('CSS') ?>

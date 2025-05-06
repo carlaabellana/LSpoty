@@ -11,6 +11,7 @@ class Track
     private $album;
     private $albumID;
     private $duration;
+
     private $playerURL;
 
 

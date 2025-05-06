@@ -109,7 +109,7 @@ class AuthController extends BaseController
         }
 
         $session = session();
-        $session->set('email', $email);
+        $session->set('loggedIn', true);
 
         return redirect()->route('landing-page.get');
     }
