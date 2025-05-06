@@ -1,0 +1,52 @@
+#searchBar {
+    max-width: 800px;
+    width: 100%;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 20px;
+    padding: 10px 15px;
+    border-color: #b5828c;
+
+}
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+input {
+    align-self: center;
+    border-style: hidden;
+    background-color: white;
+    outline: none;
+    height: 30px;
+    width: 100%;
+    color: #b5828c;
+
+}
+input:focus {
+    border-style: hidden;
+    border-width: 0;
+}
+button>img{
+    height: 20px;
+}
+
+select {
+    background-color: #e5989B;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #b5828c;
+    height: 20px;
+    margin: 0 10px;
+    color: white;
+    outline: none;
+}
+button{
+    border-style: hidden;
+    background-color: transparent;
+}
+
+
+

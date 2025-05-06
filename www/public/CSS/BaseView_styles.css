@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+}
+#content{
+    margin: 10px;
+    margin-top: 134px;
+}
+#logo{
+    width: 20vw;
+    cursor: pointer;
+    margin: 20px;
+    border-radius: 30%;
+}
+#center{
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 50px 0 20px;
+    gap: 10px;
+}
+#My{
+    width: max-content;
+    text-decoration: underline;
+}
+#right button {
+    background-color: darkred;
+    color: white;
+}
+#userImg {
+    height: 50px;
+    border-radius: 100px;
+}
+header {
+    background-color: #ffcdb2;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+

@@ -22,7 +22,7 @@ $routes->group('sign-in', ['namespace' => 'App\Controllers'/*, 'filters' => 'unr
 });
 
 $routes->group('home', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
-    $routes->get('', 'AuthController::signIn', ['as' => 'home.get']);
+    $routes->get('', 'HomePageController::index', ['as' => 'home.get']);
 });
 
 $routes->group('profile', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
