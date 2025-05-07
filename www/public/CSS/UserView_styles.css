@@ -1,0 +1,78 @@
+:root {
+    --gap: 20px;
+    --radius: 40px;
+    --bg: #f9f7f3;
+    /*Buttons Variables*/
+    --primary-color: #e2979b;
+    --primary-color-dark: #b4818a;
+    --btn-radius: 4px;
+    --btn-padding: 0.75rem 1.5rem;
+}
+
+
+.user-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    margin-top: 20em;
+
+
+}
+
+.user-image {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-right: 2em;
+
+}
+
+.user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Base button styling */
+.data-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.data-buttons .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+
+
+
+}
+
+/* Both buttons now filled */
+.data-buttons .update,
+.data-buttons .delete {
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.data-buttons .update:hover,
+.data-buttons .delete:hover {
+    background: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}

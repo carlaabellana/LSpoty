@@ -26,8 +26,8 @@ $routes->group('home', ['namespace' => 'App\Controllers'/*, 'filter' => 'registe
 });
 
 $routes->group('profile', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
-    $routes->get('', 'AuthController::signIn', ['as' => 'profile.get']);
-    $routes->post('', 'AuthController::handleSignIn', ['as' => 'profile.post']);
+    $routes->get('', 'UserPageController', ['as' => 'profile.get']);
+    $routes->post('', 'UserPageController', ['as' => 'profile.post']);
 });
 
 //Faltan las de artist
