@@ -13,13 +13,12 @@
 <?= $this->section('centerNav') ?>
     <div id="searchBar">
         <form method="GET" action="<?=base_url('/home')?>">
-            <input type="text" name="query" placeholder="Search..." value="<?= htmlspecialchars($_GET['query'] ?? '') ?>" />
+            <input type="text" name="query" placeholder="<?= lang('HomePage.search')?>" value="<?= htmlspecialchars($_GET['query'] ?? '') ?>" />
             <select name="filter">
-                <option value = ""> - </option>
-                <option value = "tracks">Tracks</option>
-                <option value = "albums">Albums</option>
-                <option value = "artists">Artist</option>
-                <option value = "playlists">Playlist</option>
+                <option value = "tracks"><?= lang('HomePage.option1')?></option>
+                <option value = "albums"><?= lang('HomePage.option2')?></option>
+                <option value = "artists"><?= lang('HomePage.option3')?></option>
+                <option value = "playlists"><?= lang('HomePage.option4')?></option>
             </select>
             <button type="submit"><img src="/IMAGES/SearchButton.png" alt="?"/></button>
         </form>
@@ -31,4 +30,5 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+    <p><?=implode( " ", $results[0])?></p>
 <?= $this->endSection() ?>

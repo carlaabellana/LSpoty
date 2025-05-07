@@ -12,7 +12,7 @@
     <!--center nav: para poner algo en el centro de la barra de nav (nada / seach bar)-->
     <div id="center"><?=$this->renderSection('centerNav')?></div>
     <div id ='right'>
-        <a id="My">my playlists 💕</a>
+        <a id="My"><?= lang('HomePage.myPlaylists')?>💕</a>
         <a><img src="<?=$this->renderSection('imgUrl')?>" id="userImg"></a>
         <button>bye</button>
     </div>
