@@ -7,6 +7,11 @@ use CodeIgniter\Controller;
 
 class AuthController extends BaseController
 {
+    public function signUpGet()
+    {
+        return view('SignUp', ['errors' => [], 'old' => []]);
+    }
+
     public function signUp()
     {
         $form_labels = [
@@ -27,10 +32,10 @@ class AuthController extends BaseController
 
         $userModel = new UserModel();
 
-        $email = $this->request->getPost('email');
+        $email = trim($this->request->getPost('email'));
         $password = $this->request->getPost('password');
         $repeatPassword = $this->request->getPost('repeat_password');
-        $money = $this->request->getPost('money');
+        $username = trim($this->request->getPost('username')) ?: explode('@', $email)[0];
 
 
         if (empty($email)) {
@@ -39,22 +44,42 @@ class AuthController extends BaseController
             $errors['email'] = lang('register.email_invalid');
         } elseif (!preg_match('/@(students\.salle\.url\.edu|ext\.salle\.url\.edu|salle\.url\.edu)$/', $email)) {
             $errors['email'] = lang('register.email_domain');
-        } else {
-            if ($userModel->where('email', $email)->first()) {
-                $errors['email'] = lang('register.email_registered');
-            }
+        } elseif ($userModel->where('email', $email)->first()) {
+            $errors['email'] = lang('register.email_registered');
         }
 
         if (empty($password)) {
-            $errors['password'] = lang('register.password_short');
+            $errors['password'] = lang('register.password_required');
         } elseif (strlen($password) < 8) {
             $errors['password'] = lang('register.password_short');
         } elseif (!preg_match('/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/', $password)) {
             $errors['password'] = lang('register.password_weak');
         }
 
-        if ($repeatPassword !== $password) {
+        if (empty($repeatPassword)) {
+            $errors['repeat_password'] = lang('register.repeat_required');
+        } elseif ($repeatPassword !== $password) {
             $errors['repeat_password'] = lang('register.repeat_mismatch');
+        }
+
+        $profilePicPath ='/IMAGES/default_image.png';
+
+        $file = $this->request->getFile('profile_pic');
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $maxSize = 2 * 1024 * 1024;
+            $extension = strtolower($file->getClientExtension());
+            $allowed = ['jpg', 'jpeg', 'png'];
+
+            if (!in_array($extension, $allowed)) {
+                $errors['profile_pic'] = lang('register.invalid_extension');
+            } elseif ($file->getSize() > $maxSize) {
+                $errors['profile_pic'] = lang('register.file_too_large');
+            } else {
+                $newName = $file->getRandomName();
+                $file->move(WRITEPATH . 'uploads', $newName);
+                $profilePicPath = '/uploads/' . $newName;
+            }
         }
 
         if (!empty($errors)) {
@@ -67,8 +92,10 @@ class AuthController extends BaseController
         $userModel->save([
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
-            'money' => $money
+            'username' => $username,
+            'profile_pic' => $profilePicPath
         ]);
+
         return redirect()->route('sign-in.get')->with('message', lang('register.account_created'));
     }
     public function signIn()
