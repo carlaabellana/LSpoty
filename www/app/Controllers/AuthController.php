@@ -136,9 +136,12 @@ class AuthController extends BaseController
         }
 
         $session = session();
-        $session->set('loggedIn', true);
+        $session->set([
+            'loggedIn'     => true,
+            'user_id'        => $user['id'],
+        ]);
 
-        return redirect()->route('landing-page.get');
+        return redirect()->route('profile.get');
     }
     public function deleteAccount()
     {

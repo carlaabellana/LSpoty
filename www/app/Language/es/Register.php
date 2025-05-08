@@ -12,6 +12,8 @@ return [
     'profile_picture_form'  => 'Foto de perfil (opcional)',
     'btn_form'              => 'Registrarse',
     'btn_login'             => 'Iniciar sesión',
+    'age'                   => 'Edad: ',
+    'profile_picture'       => 'Foto de Perfil:',
 
     // Errores de validación
     'email_required'        => 'Este campo es obligatorio.',
@@ -40,4 +42,10 @@ return [
     'register_here'         => 'Regístrate aquí',
     'yes_account'           => '¿Ya tienes una cuenta? ',
     'login_here'            => 'Inicia sesión aquí',
+
+    //Botones User
+    'change_data'           => 'Cambiar Datos',
+    'delete_data'           => 'Borrar Cuenta',
+    'save_data'             => 'Guardar Cambios',
+    'cancel'                => 'Cancelar',
 ];

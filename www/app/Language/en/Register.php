@@ -12,6 +12,8 @@ return [
     'profile_picture_form'  => 'Profile Picture (optional)',
     'btn_form'              => 'Register',
     'btn_login'             => 'Login',
+    'age'                   => 'Age: ',
+    'profile_picture'       => 'Profile Picture:',
 
     // Validation Errors
     'email_required'        => 'This field is required.',
@@ -40,4 +42,11 @@ return [
     'register_here'         => 'Register here',
     'yes_account'           => "Do you have an account? ",
     'login_here'            => 'Login here',
+
+    //Botones User
+    'change_data'           => 'Change Data',
+    'delete_data'           => 'Delete Account',
+    'save_data'             => 'save Changes',
+    'cancel'                => 'Cancel',
+
 ];
