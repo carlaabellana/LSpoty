@@ -77,8 +77,8 @@ class AuthController extends BaseController
                 $errors['profile_pic'] = lang('register.file_too_large');
             } else {
                 $newName = $file->getRandomName();
-                $file->move(WRITEPATH . 'uploads', $newName);
-                $profilePicPath = '/uploads/' . $newName;
+                $file->move(FCPATH . 'uploads', $newName);
+                $profilePicPath = $newName;
             }
         }
 
