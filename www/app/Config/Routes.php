@@ -25,10 +25,13 @@ $routes->group('home', ['namespace' => 'App\Controllers'/*, 'filter' => 'registe
     $routes->get('', 'HomePageController::index', ['as' => 'home.get']);
 });
 
-$routes->group('profile', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
-    $routes->get('', 'UserPageController', ['as' => 'profile.get']);
-    $routes->post('', 'UserPageController', ['as' => 'profile.post']);
-});
+//$routes->group('profile', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
+//    $routes->get('', 'UserPageController', ['as' => 'profile.get']);
+//    $routes->post('', 'UserPageController', ['as' => 'profile.post']);
+//});
+
+$routes->get('/profile', 'UserPageController::index', ['as' => 'profile.get']);
+$routes->post('/profile', 'UserPageController::profilePost', ['as' => 'profile.post']);
 
 //Faltan las de artist
 //Faltan las de album

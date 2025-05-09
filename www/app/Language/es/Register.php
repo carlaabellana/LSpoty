@@ -8,7 +8,7 @@ return [
     'email_form'            => 'Correo electrónico:',
     'password_form'         => 'Contraseña:',
     'repeat_form'           => 'Repetir contraseña:',
-    'username_form'         => 'Nombre de usuario:',
+    'username_form'         => 'Nombre de usuario (opcional):',
     'profile_picture_form'  => 'Foto de perfil (opcional)',
     'btn_form'              => 'Registrarse',
     'btn_login'             => 'Iniciar sesión',

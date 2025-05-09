@@ -8,7 +8,7 @@ return [
     'email_form'            => 'Email:',
     'password_form'         => 'Password:',
     'repeat_form'           => 'Repeat password:',
-    'username_form'         => 'Username:',
+    'username_form'         => 'Username (optional):',
     'profile_picture_form'  => 'Profile Picture (optional)',
     'btn_form'              => 'Register',
     'btn_login'             => 'Login',

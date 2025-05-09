@@ -35,8 +35,8 @@ class AuthController extends BaseController
         $email = trim($this->request->getPost('email'));
         $password = $this->request->getPost('password');
         $repeatPassword = $this->request->getPost('repeat_password');
-        $username = trim($this->request->getPost('username')) ?: explode('@', $email)[0];
-
+        $usernameInput = trim($this->request->getPost('username'));
+        $username = !empty($usernameInput) ? $usernameInput : explode('@', $email)[0];
 
         if (empty($email)) {
             $errors['email'] = lang('register.email_invalid');

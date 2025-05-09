@@ -1,7 +1,7 @@
-<!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages-->
+Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages
 <?= $this->extend('LogBaseView') ?>
 
-<!--Title of the page will appear on the navbar-->
+Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
 UserPage | LSpoty
 <?= $this->endSection() ?>
@@ -16,8 +16,8 @@ UserPage | LSpoty
     <section class="user-content">
         <article>
             <section class="user-image">
-                <?php if (! empty($userPage_data['profile_picture'])): ?>
-                    <img src="<?= base_url('uploads/' . esc($userPage_data['profile_picture'])) ?>"
+                <?php if (! empty($userPage_data['profile_pic'])): ?>
+                    <img src="<?= base_url('uploads/' . esc($userPage_data['profile_pic'])) ?>"
                          alt="Foto de <?= esc($userPage_data['username']) ?>">
                 <?php else: ?>
                     <img src="/IMAGES/default_image.png" alt="Generic user image.">
@@ -32,7 +32,10 @@ UserPage | LSpoty
         </article>
         <footer class="data-buttons">
             <a href="<?= route_to('profile.get') . '?edit=1' ?>" class="btn update"><?= lang('register.change_data') ?></a>
-            <button class="btn delete"><?= lang('register.delete_data') ?></button>
+            <form action="<?= route_to('profile.post') ?>" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');">
+                <?= csrf_field() ?>
+                <button type="submit" name="action" value="deleteAccount" class="btn delete"><?= lang('register.delete_data') ?></button>
+            </form>
         </footer>
     </section>
 <?php else: ?>
@@ -60,7 +63,7 @@ UserPage | LSpoty
                 <?php endif; ?>
 
                 <label><?= lang('register.age') ?></label>
-                <input type="text" name="age">
+                <input type="number" name="age" min="0" max="100" step="1">
                 <?php if (isset($errors['age'])): ?>
                     <div class="error"><?= esc($errors['age']) ?></div>
                 <?php endif; ?>
