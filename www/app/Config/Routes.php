@@ -25,21 +25,37 @@ $routes->group('home', ['namespace' => 'App\Controllers'/*, 'filter' => 'registe
     $routes->get('', 'HomePageController::index', ['as' => 'home.get']);
 });
 
-//$routes->group('profile', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
-//    $routes->get('', 'UserPageController', ['as' => 'profile.get']);
-//    $routes->post('', 'UserPageController', ['as' => 'profile.post']);
-//});
+$routes->group('profile', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
+    $routes->get('', 'UserPageController::index', ['as' => 'profile.get']);
+    $routes->post('', 'UserPageController::profilePost', ['as' => 'profile.post']);
+});
 
-$routes->get('/profile', 'UserPageController::index', ['as' => 'profile.get']);
-$routes->post('/profile', 'UserPageController::profilePost', ['as' => 'profile.post']);
+//Revisar a partir de aquí en caso de ser necesario
 
-//Faltan las de artist
-//Faltan las de album
-//Faltan las de playlist
-//Faltan las de my playlist
+$routes->group('artist', ['namespace' => 'App\Controllers\API'], function($routes) {
+    $routes->get('/(:num)', 'ArtistController::show/$1', ['as' => 'artist.get']);
+    $routes->post('/(:num)', 'ArtistController::update/$1', ['as' => 'artist.update']);
+});
+
+$routes->group('album', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/(:num)', 'AlbumController::show/$1', ['as' => 'album.get']);
+    $routes->post('/(:num)', 'AlbumController::update/$1', ['as' => 'album.update']);
+});
+
+$routes->group('playlist', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/(:num)', 'PlaylistController::show/$1', ['as' => 'playlist.get']);
+    $routes->post('/(:num)', 'PlaylistController::update/$1', ['as' => 'playlist.update']);
+});
+
+$routes->group('my-playlists', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('', 'MyPlaylistsController::index', ['as' => 'my-playlists.get']);
+    $routes->get('/(:num)', 'MyPlaylistsController::show/$1', ['as' => 'my-playlists.get']);
+    $routes->post('/(:num)', 'MyPlaylistsController::update/$1', ['as' => 'my-playlists.update']);
+});
 
 $routes->group('create-playlist', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
     $routes->get('', 'PlaylistController::create', ['as' => 'playlist.create']);
     $routes->post('', 'PlaylistController::store', ['as' => 'playlist.store']);
 });
+
 //Faltan my playlist management
