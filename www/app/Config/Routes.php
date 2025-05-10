@@ -34,8 +34,11 @@ $routes->get('/profile', 'UserPageController::index', ['as' => 'profile.get']);
 $routes->post('/profile', 'UserPageController::profilePost', ['as' => 'profile.post']);
 
 //Faltan las de artist
+$routes->get('artist/(:num)', 'ArtistController::show/$1', ['as' => 'artist.get']);
 //Faltan las de album
+$routes->get('album/(:num)', 'AlbumsController::show/$1', ['as' => 'album.get']);
 //Faltan las de playlist
+$routes->get('playlist/(:num)', 'PlaylistsController::show/$1', ['as' => 'playlist.get']);
 //Faltan las de my playlist
 
 $routes->group('create-playlist', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {

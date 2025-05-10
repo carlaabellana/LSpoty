@@ -1,4 +1,4 @@
-sbody{
+body{
     margin: 0;
 }
 #content{
@@ -7,6 +7,7 @@ sbody{
 }
 #logo{
     width: 20vw;
+    max-width: 150px;
     cursor: pointer;
     margin: 20px;
     border-radius: 30%;
