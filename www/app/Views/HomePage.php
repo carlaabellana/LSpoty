@@ -68,7 +68,7 @@
         echo '<div id = "'.$type.'">'.'<h3>your search results:</h3> <div>';
         foreach ($results as $result) {
             echo '<div class="'.$type.'">
-            <a href = "'.base_url("playlist/".$result["id"]).'">
+            <a href = "'.base_url($type."/".$result["id"]).'">
                     <img src="'.$result["image"].'" alt="">
                     <p>' . $result["name"] . '</p>
                 </a>

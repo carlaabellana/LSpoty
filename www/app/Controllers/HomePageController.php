@@ -44,6 +44,8 @@ class HomePageController extends BaseController
             $body = json_decode($response->getBody(), true);
         }
 
+        $size = strlen($filter);
+        $filter = substr($filter, 0, ($size-1));
         $body['type'] = $filter;
         //echo implode( " ", $body['albums']['results'][0]);
         return view('HomePage', $body);
