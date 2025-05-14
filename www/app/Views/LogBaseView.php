@@ -13,7 +13,7 @@
     <div id="center"><?=$this->renderSection('centerNav')?></div>
     <div id ='right'>
         <a id="My"><?= lang('HomePage.myPlaylists')?>💕</a>
-        <a><img src="<?=$this->renderSection('imgUrl')?>" id="userImg"></a>
+        <a><img src="<?=$this->renderSection('imgUrl')?>" id="userImg" alt="user"></a>
         <button>bye</button>
     </div>
 </header>
