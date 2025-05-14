@@ -28,6 +28,11 @@ class AlbumsController extends BaseController
             'album_DisplayReleaseDate' => date('F j, Y', strtotime($album['releasedate'])),
         ];
 
-        return view('AlbumPage', $albumData);
+        $landingPage_data = [
+            'releases'     => lang('homepage.releases'),
+            'duration'     => lang('homepage.duration'),
+        ];
+
+        return view('AlbumPage', $albumData, $landingPage_data);
     }
 }

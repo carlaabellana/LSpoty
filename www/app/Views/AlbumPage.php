@@ -30,9 +30,9 @@ Album | LSpoty
         <!--Section in which will appear the date of release and the duration of the album-->
         <section class="album-information-II">
             <p>
-                Released: <time datetime="<?= esc($album_ReleaseDate) ?>"><?= esc($album_DisplayReleaseDate) ?></time>
+                <?= lang('homepage.releases') ?> <time datetime="<?= esc($album_ReleaseDate) ?>"><?= esc($album_DisplayReleaseDate) ?></time>
                 &nbsp;|&nbsp;
-                Duration: <time datetime="<?= esc($album_ReleaseDate) ?>"><?= esc($album_DisplayReleaseDate) ?></time>
+                <?= lang('homepage.duration') ?> <time datetime="<?= esc($album_ReleaseDate) ?>"><?= esc($album_DisplayReleaseDate) ?></time>
             </p>
         </section>
 
