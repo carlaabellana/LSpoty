@@ -66,8 +66,12 @@ class Track extends Entity
     }
 
     public function generateView(string $type = "album"):string{
+        $ImageCover = esc($this->cover);
+
         $view = '<div class="track">
-        <div class="cover">'.$this->cover.'</div>
+        <div class="cover">
+        <img src="'.$ImageCover.'" alt="Cover for '.$this->name.'">
+        </div>
         <div class="infoSpace">
             <p>'.$this->name.'</p>';
         if ($type === 'playlist') {
@@ -81,6 +85,7 @@ class Track extends Entity
                 </audio>
             </div> <button class="add">+</button>';
         }
+        $view .= '</div>';
         return $view;
     }
 

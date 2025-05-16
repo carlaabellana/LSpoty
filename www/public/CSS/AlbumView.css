@@ -1,0 +1,206 @@
+/* ======================
+   Base & Variables
+   ====================== */
+:root {
+    --color-text: #333;
+    --color-muted: #666;
+    --color-border: #e0e0e0;
+    --font-sans: "Helvetica Neue", Arial, sans-serif;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: #fafafa;
+}
+
+/* ======================
+   Main Layout
+   ====================== */
+.album-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background: #fff;
+    border: 1em solid pink;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* ======================
+   Album Header Section
+   ====================== */
+.album-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.album-image {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.album-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.album-information-I {
+    flex: 1;
+}
+
+.album-title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.artist-name {
+    margin: var(--spacing-sm) 0 0;
+    font-size: 1.1rem;
+    color: var(--color-muted);
+}
+
+/* ======================
+   Album Metadata
+   ====================== */
+.album-information-II {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.album-information-II time {
+    font-weight: 500;
+}
+
+/* ======================
+   Track Listing
+   ====================== */
+.track {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    gap: 1rem;
+    background-color: #fafafa;
+    transition: background-color 0.2s;
+}
+
+.track:hover {
+    background-color: #f0f0f0;
+}
+
+.cover {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infoSpace {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.infoSpace p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.2;
+}
+
+.info {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.info p {
+    margin: 0;
+}
+
+/* ======================
+   Audio Player Controls
+   ====================== */
+.PlayTrack {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+}
+
+.PlayTrack audio {
+    width: 150px;
+}
+
+.add {
+    flex: 0 0 auto;
+    background-color: #da9b9c;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.add:hover {
+    background-color: #da9b9c;
+}
+
+.add:active {
+    transform: scale(0.95);
+}
+
+/* ======================
+   Responsive Design
+   ====================== */
+@media (max-width: 600px) {
+    .album-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .album-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+    .album-information-I {
+        margin-top: var(--spacing-md);
+    }
+}

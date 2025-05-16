@@ -8,7 +8,7 @@
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/AlbumView_styles.css">
+<link rel="stylesheet" href="/CSS/AlbumView.css">
 <?= $this->endSection() ?>
 
 
@@ -46,8 +46,11 @@
             </p>
         </section>
 
-        <section class="track-listing" aria-labelledby="track-list-heading">
-            <h2 id="track-list-heading" class="visually-hidden">Track List</h2>
-        </section>
+        <article aria-labelledby="album-title">
+            <section class="album-tracks">
+                <?= $album->generateTrackView() ?>
+            </section>
+
+        </article>
 
 <?= $this->endSection() ?>
