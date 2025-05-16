@@ -6,6 +6,7 @@
     LandingPage | LSpoty
 <?= $this->endSection() ?>
 
+<!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
 <link rel="stylesheet" href="/CSS/LandingPage_styles.css">
 <?= $this->endSection() ?>

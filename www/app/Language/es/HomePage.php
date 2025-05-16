@@ -11,4 +11,8 @@ return [
 
     //header
     'myPlaylists' => 'Mis playlists ',
+
+    //Albums
+    'releases' => 'Fecha de Estreno: ',
+    'duration' => 'Duración: ',
 ];
