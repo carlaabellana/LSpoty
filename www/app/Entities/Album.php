@@ -39,8 +39,9 @@ class Album extends Entity
                 $track = new Track($track, "album");
                 $track->setCover($this->cover);
                 $this->total_duration += $track->duration;
-                $this->tracks[$key] = $track;
+                $tracks[$key] = $track;
             }
+            $this->tracks = $tracks;
         }
 
     }
