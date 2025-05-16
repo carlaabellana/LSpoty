@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use App\Entities\Album;
+use App\Entities\Track;
 use GuzzleHttp\Client;
 
 class HomePageController extends BaseController
@@ -11,10 +13,6 @@ class HomePageController extends BaseController
         $client = new Client();
         $filter = $_GET['filter'] ?? '';
         $query = $_GET['query'] ?? '';
-        //$data = [];
-        //$data['albums'] = [];
-        //$data['artists'] = [];
-        //$data['playlists'] = [];
         if ($filter === '') {
             $apiUrl1 = "https://api.jamendo.com/v3.0/albums/?client_id=9d42fee4";
             $apiUrl2 = "https://api.jamendo.com/v3.0/artists/?client_id=9d42fee4";
@@ -28,6 +26,12 @@ class HomePageController extends BaseController
 
             $response = $client->request('GET', $apiUrl1);
             $body['albums'] = json_decode($response->getBody(), true);
+            foreach ($body['albums']['results'] as $key => $album) {
+                $album = new Album($album);
+                $albums[$key] = $album;
+            }
+            $body['albums'] = $albums;
+
             $response = $client->request('GET', $apiUrl2);
             $body['artists'] = json_decode($response->getBody(), true);
             $response = $client->request('GET', $apiUrl3);
@@ -42,11 +46,25 @@ class HomePageController extends BaseController
             }
             $response = $client->request('GET', $apiUrl);
             $body = json_decode($response->getBody(), true);
+            if ($filter === 'tracks'){
+                $tracks = [];
+                foreach ($body['results'] as $key => $track) {
+                    $newTrack = new Track($track);
+                    //echo get_class($track);
+                    $tracks[$key] = $newTrack;
+
+                }
+                $body['results'] = $tracks;
+
+
+            }
         }
 
         $size = strlen($filter);
         $filter = substr($filter, 0, ($size-1));
         $body['type'] = $filter;
+
+        //return get_class($body['response'][0]);
         //echo implode( " ", $body['albums']['results'][0]);
         return view('HomePage', $body);
     }
