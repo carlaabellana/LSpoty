@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\UserModel;
+
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -54,5 +56,21 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
+
+        //Foto de perfil en la cabecera
+        $session = session();
+        $userId = $session->get('user_id');
+
+        if ($userId) {
+            $userModel = new UserModel();
+            $user = $userModel->find($userId);
+
+            $profilePic = $user['profile_pic'] ?? '';
+            $isUpload = !empty($profilePic) && !str_contains($profilePic, 'default');
+            $imgUrl = base_url($isUpload ? 'uploads/' . $profilePic : 'IMAGES/default_image.png');
+
+            // Hacer disponible la imagen en todas las vistas
+            service('renderer')->setVar('globalUserImgUrl', $imgUrl);
+        }
     }
 }
