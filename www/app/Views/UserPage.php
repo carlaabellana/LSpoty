@@ -1,14 +1,16 @@
-<!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages
+<!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages -->
 <?= $this->extend('LogBaseView') ?>
 
-<!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
 UserPage | LSpoty
 <?= $this->endSection() ?>
 
-<!--
 <?= $this->section('CSS') ?>
 <link rel="stylesheet" href="/CSS/UserPage_styles.css">
+<?= $this->endSection() ?>
+
+<?= $this->section('centerNav') ?>
+    <a href="<?= base_url('/home'); ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -17,12 +19,12 @@ UserPage | LSpoty
     <section class="user-content">
         <article>
             <section class="user-image">
-                <?php if (! empty($userPage_data['profile_pic'])): ?>
-                    <img src="<?= base_url('uploads/' . esc($userPage_data['profile_pic'])) ?>"
-                         alt="Foto de <?= esc($userPage_data['username']) ?>">
-                <?php else: ?>
-                    <img src="/IMAGES/default_image.png" alt="Generic user image.">
-                <?php endif; ?>
+                <?php
+                $profilePic = $userPage_data['profile_pic'] ?? '';
+                $isUpload = !empty($profilePic) && !str_contains($profilePic, 'default');
+                ?>
+                <img src="<?= base_url($isUpload ? 'uploads/' . $profilePic : 'IMAGES/default_image.png') ?>"
+                     alt="Foto de <?= esc($userPage_data['username'] ?? 'usuario') ?>">
             </section>
 
             <section class="user-data">

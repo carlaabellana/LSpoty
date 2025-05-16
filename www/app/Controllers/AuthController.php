@@ -80,6 +80,8 @@ class AuthController extends BaseController
                 $file->move(FCPATH . 'uploads', $newName);
                 $profilePicPath = $newName;
             }
+        } else {
+            $profilePicPath = '/IMAGES/default_image.png';
         }
 
         if (!empty($errors)) {
