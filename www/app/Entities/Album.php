@@ -71,7 +71,7 @@ class Album extends Entity
         $view = '<div style="background-color: #dd4814"> start  ';
         foreach ($this->tracks as $track) {
             //$view = $view . $track->generateView('album');
-            $view .= $track->generateTrackView('album');
+            $view .= $track->generateView('album');
         }
         $view = $view . '</div>';
         return $view;
