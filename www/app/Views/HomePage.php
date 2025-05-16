@@ -31,13 +31,14 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-    <?php if ($type === '') {
+    <?php
+    if ($type === '') {
         echo '<div id = "albums">'.'<h3>Alums you might like</h3> <div>';
-        foreach ($albums['results'] as $album) {
+        foreach ($albums as $album) {
             echo '<div class="albums">
-                <a href = "'.base_url("album/".$album["id"]).'">
-                    <img src="'.$album["image"].'" alt="">
-                    <p>' . $album["name"] . '</p>
+                <a href = "'.base_url("album/".$album->id).'">
+                    <img src="'.$album->cover.'" alt="">
+                    <p>' . $album->name . '</p>
                 </a>
             </div>';
         }
@@ -64,8 +65,8 @@
             </div>';
         }
         echo '</div></div>';
-    } else {
-        echo '<div id = "'.$type.'">'.'<h3>your search results:</h3> <div>';
+    } elseif ($type !== 'track') {
+        echo '<div id = "'.$type.'s">'.'<h3>your search results:</h3> <div>';
         foreach ($results as $result) {
             echo '<div class="'.$type.'">
             <a href = "'.base_url($type."/".$result["id"]).'">
@@ -74,7 +75,15 @@
                 </a>
             </div>';
         }
-    }   echo '</div></div>';
+        echo '</div></div>';
+    } else {
+        echo '<div id = "'.$type.'s">'.'<h3>your tracks search results:</h3> <div>';
+
+        foreach ($results as $track) {
+            //echo get_class($track);
+            echo $track->generateView();
+        }
+    }
     ?>
 
 <?= $this->endSection() ?>
