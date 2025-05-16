@@ -26,6 +26,24 @@ class Album extends Entity
         'total_duration' => 'integer',
     ];
 
+    public function monthLanguage(): string
+    {
+        $dateAlbum = $this->release_date;
+
+        $monthAlbum = (int) $dateAlbum->format('m');
+
+        return lang("homepage.month_{$monthAlbum}");
+    }
+    public function getFormatDuration(): string
+    {
+        $seconds = $this->total_duration;
+        $albumHours = floor($seconds / 3600);
+        $albumMinutes = floor(($seconds % 3600) / 60);
+        $albumSeconds = $seconds % 60;
+
+        return sprintf('%02d:%02d:%02d', $albumHours, $albumMinutes, $albumSeconds);
+    }
+
     public function __construct(array $data = null) {
         parent::__construct();
         $this->id = $data['id'] ?? '0';
@@ -68,7 +86,7 @@ class Album extends Entity
 
 
     public function generateTrackView(): string {
-        $view = '<div style="background-color: #dd4814"> start  ';
+        $view = '<div style="background-color: #dd4814"> ';
         foreach ($this->tracks as $track) {
             //$view = $view . $track->generateView('album');
             $view .= $track->generateView('album');

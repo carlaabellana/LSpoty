@@ -37,11 +37,20 @@
             <p>
                 <?= lang('homepage.releases') ?>
                 <time datetime="<?= esc($album->release_date->format('Y-m-d')) ?>">
-                    <?= esc($album->release_date->format('F j, Y')) ?>
+                    <?php
+                    $monthAlbum = $album->release_date->format('n');
+                    $dayAlbum = $album->release_date->format('j');
+                    $yearAlbum = $album->release_date->format('Y');
+                    ?>
+
+                    <?= lang('homepage.month_' . $monthAlbum) ?>
+                    <?= esc($dayAlbum) ?>
+                    <?= esc($yearAlbum) ?>
                 </time>
                 &nbsp;|&nbsp;
+                <?= lang('homepage.duration') ?>
                 <time datetime="<?= esc($album->release_date->format('Y-m-d')) ?>">
-                    <?= esc($album->total_duration) ?>
+                    <?= esc($album->getFormatDuration()) ?>
                 </time>
             </p>
         </section>
