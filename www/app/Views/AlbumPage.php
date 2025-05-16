@@ -3,7 +3,7 @@
 
 <!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
-Album | LSpoty
+<?= esc($album->name) ?> | LSpoty
 <?= $this->endSection() ?>
 
 <!--We link the CSS to format the page-->
@@ -13,31 +13,41 @@ Album | LSpoty
 
 
 <?= $this->section('content') ?>
-<!--Main where all the content of the page will be stored-->
 <main class="album-main">
-    <!--Article which contains the general info of the album-->
+
     <article aria-labelledby="album-title">
-        <!--Section in which will appear the image of the album, the title and artist name-->
+
         <section class="album-banner">
             <figure class="album-image" role="img" aria-label="Album cover">
-                <img src="<?= esc($album_Cover) ?>" alt="Album cover">
+                <img src="<?= esc($album->cover) ?>"
+                     alt="Cover art for <?= esc($album->name) ?>">
             </figure>
+
             <div class="album-information-I">
-                <h1 id="album-title" class="album-title"><?= esc($album_Name) ?></h1>
-                <p class="artist-name"><?= esc($artist_Name) ?></p>
+                <h1 id="album-title" class="album-title">
+                    <?= esc($album->name) ?>
+                </h1>
+                <p class="artist-name">
+                    <?= esc($album->artist) ?>
+                </p>
             </div>
         </section>
-        <!--Section in which will appear the date of release and the duration of the album-->
+
         <section class="album-information-II">
             <p>
-                <?= lang('homepage.releases') ?> <time datetime="<?= esc($album_ReleaseDate) ?>"><?= esc($album_DisplayReleaseDate) ?></time>
+                <?= lang('homepage.releases') ?>
+                <time datetime="<?= esc($album->release_date->format('Y-m-d')) ?>">
+                    <?= esc($album->release_date->format('F j, Y')) ?>
+                </time>
                 &nbsp;|&nbsp;
-                <?= lang('homepage.duration') ?> <time datetime="<?= esc($album_ReleaseDate) ?>"><?= esc($album_DisplayReleaseDate) ?></time>
+                <time datetime="<?= esc($album->release_date->format('Y-m-d')) ?>">
+                    <?= esc($album->total_duration) ?>
+                </time>
             </p>
         </section>
 
-
-    </article>
-</main>
+        <section class="track-listing" aria-labelledby="track-list-heading">
+            <h2 id="track-list-heading" class="visually-hidden">Track List</h2>
+        </section>
 
 <?= $this->endSection() ?>

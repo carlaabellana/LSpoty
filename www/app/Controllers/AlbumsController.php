@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use App\Entities\Album;
+use App\Entities\Track;
 use GuzzleHttp\Client;
 
 class AlbumsController extends BaseController
@@ -10,7 +12,7 @@ class AlbumsController extends BaseController
         helper('form');
         $client   = new Client();
 
-        $albumUrl = "https://api.jamendo.com/v3.0/albums/?client_id=9d42fee4&id=$albumId";
+        $albumUrl = "https://api.jamendo.com/v3.0/albums/tracks/?client_id=9d42fee4&id=".$albumId."&include=tracks";
         $response = $client->request('GET', $albumUrl);
         $body     = json_decode($response->getBody(), true);
 
@@ -18,16 +20,9 @@ class AlbumsController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException("Album not found");
         }
 
-        $album = $body['results'][0];
+        $albumData = $body['results'][0];
+        $albumEntity = new Album($albumData);
 
-        $albumData = [
-            'album_Name'               => $album['name'],
-            'artist_Name'              => $album['artist_name'],
-            'album_Cover'              => $album['image'],
-            'album_ReleaseDate'        => $album['releasedate'],
-            'album_DisplayReleaseDate' => date('F j, Y', strtotime($album['releasedate'])),
-        ];
-
-        return view('AlbumPage', $albumData);
+        return view('AlbumPage', ['album' => $albumEntity]);
     }
 }
