@@ -61,5 +61,6 @@
             </section>
 
         </article>
-
+    </article>
+</main>
 <?= $this->endSection() ?>
