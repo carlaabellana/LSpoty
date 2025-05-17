@@ -166,7 +166,6 @@ body {
     border-color: var(--primary);
 }
 
-/* Error Styling */
 #edit-mode .error {
     color: #e74c3c;
     font-size: 0.875rem;
@@ -178,30 +177,56 @@ body {
     border-radius: 8px;
     margin-top: 1rem;
 }
-
-/* Responsiveness Styling */
 @media (max-width: 600px) {
+    body {
+        background: yellow !important;
+    }
     .user-content,
     .user-content > article,
     #edit-mode form {
         padding: calc(var(--gap) / 2);
+        margin-top: 10em;
     }
+
     .user-image {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
+
     .user-name {
         font-size: 1.5rem;
     }
+
     .data-buttons {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
     }
+
     #edit-mode article {
         max-width: 100%;
+        padding: 0 1rem;
     }
+
+    #edit-mode article > input[type="file"],
+    #edit-mode article > input[type="text"],
+    #edit-mode article > input[type="password"],
+    #edit-mode article > input[type="number"] {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
     .btn {
         width: 100%;
         justify-content: center;
+        padding: 0.75rem 1rem;
+    }
+
+    .btn.cancel {
+        order: 2;
+    }
+
+    .btn.save {
+        order: 1;
     }
 }

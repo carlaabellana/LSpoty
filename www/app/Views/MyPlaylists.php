@@ -7,7 +7,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('centerNav') ?>
-<a href="<?= base_url('/home') ?>" class="home-link">← Home</a>
+<a href="<?= base_url('/home') ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
