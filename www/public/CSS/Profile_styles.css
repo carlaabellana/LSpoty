@@ -44,7 +44,7 @@ body {
 
 /* Edit-mode form wrapper */
 #edit-mode form {
-    margin-top: 5em;
+    margin-top: 10em;
     width: 100%;
     max-width: 500px;
     padding: 0 1rem;
@@ -200,7 +200,7 @@ body {
     }
 
     #edit-mode form {
-        margin-top: 2em;
+        margin-top: 10em;
         width: 100%;
     }
 

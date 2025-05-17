@@ -25,4 +25,6 @@ return [
     'card_4'          => 'Study Vibes',
     'card_5'          => 'Studio Sessions',
     'card_6'          => 'Chill Beats',
+
+    'Landing'         => 'LandingPage',
 ];

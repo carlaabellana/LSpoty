@@ -11,16 +11,16 @@
         <form action="<?= base_url('/my-playlists/' . $playlist['id']) ?>" method="post" class="rename-form">
             <?= csrf_field() ?>
             <input type="text" name="name" value="<?= esc($playlist['name']) ?>" class="playlist-name-input" />
-            <button type="submit" class="save-btn">Save</button>
+            <button type="submit" class="save-btn"><?= lang('HomePage.update_playlist')?></button>
         </form>
 
-        <a href="<?= base_url('/delete-playlist/' . $playlist['id']) ?>" class="delete-btn">Delete Playlist</a>
+        <a href="<?= base_url('/delete-playlist/' . $playlist['id']) ?>" class="delete-btn"><?= lang('HomePage.del_playlist')?></a>
     </div>
 </div>
 
 <div class="playlist-tracks">
-    <h3>Tracks</h3>
-    <p>♫ Tracks coming soon… </p>
+    <h3><?= lang('HomePage.tracks')?></h3>
+    <p><?= lang('HomePage.song-soon')?></p>
 </div>
 
 <div class="playlist-player">

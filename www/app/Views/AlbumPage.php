@@ -13,25 +13,29 @@
 
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
-<a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
+<a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <main class="album-main">
 
-    <!--Here the
+    <!--Here the main album information will be shown-->
     <article aria-labelledby="album-title">
         <section class="album-banner">
+            <!--Image of the album cover-->
             <figure class="album-image" role="img" aria-label="Album cover">
                 <img src="<?= esc($album->cover) ?>"
                      alt="Cover art for <?= esc($album->name) ?>">
             </figure>
 
             <div class="album-information-I">
+                <!--Album title-->
                 <h1 id="album-title" class="album-title">
                     <?= esc($album->name) ?>
                 </h1>
+
+                <!--Artist name-->
                 <p class="artist-name">
                     <a href="<?= route_to('artist.get', $album->artistId) ?>" class="artist-link">
                     <?= esc($album->artist) ?>
@@ -40,6 +44,7 @@
             </div>
         </section>
 
+        <!--Here the release date and duration will be showed formatted-->
         <section class="album-information-II">
             <p>
                 <?= lang('homepage.releases') ?>
@@ -62,11 +67,11 @@
             </p>
         </section>
 
+        <!--A list of tracks of the album will be rendered here-->
         <article aria-labelledby="album-title">
             <section class="album-tracks">
                 <?= $album->generateTrackView() ?>
             </section>
-
         </article>
     </article>
 </main>

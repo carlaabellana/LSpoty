@@ -3,7 +3,7 @@
 
 <!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
-    LandingPage | LSpoty
+<?= lang('landing.landing')?> | LSpoty
 <?= $this->endSection() ?>
 
 <!--We link the CSS to format the page-->

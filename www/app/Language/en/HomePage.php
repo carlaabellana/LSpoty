@@ -50,4 +50,22 @@ return [
 
     'err_crate_p_title' => 'Please give your playlist a title.',
     'succ_create_p'     => 'Your playlist has been created.',
+
+    'return_home'      => '← Return to home page',
+    'my_playlists'     => 'My playlists🎧',
+    'new_playlist'     => '+ New Playlist',
+    'playlist_details' => 'Select a playlist to view details',
+    'playlist_title'   => 'My playlists',
+    'create'           => 'Create',
+    'p_form_title'     => 'Title for playlist: ',
+    'p_form_img'       => 'Introduce image: ',
+    'home'             => 'Homepage',
+    'save'             => 'Save playlist',
+    'albums'           => 'Albums',
+
+    'del_playlist'     => 'Delete playlist',
+    'update_playlist'  => 'Save',
+    'song-soon'        => '♫ Tracks coming soon… ',
+    'tracks'           => 'Tracks',
+
 ];

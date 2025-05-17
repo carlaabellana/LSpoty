@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?= $this->renderSection('title') ?></title>
     <?= $this->renderSection('CSS') ?>
-    <link rel="stylesheet" href="/CSS/BaseView.css">
+    <link rel="stylesheet" href="/CSS/BaseView_Style.css">
 </head>
     <body>
         <header>

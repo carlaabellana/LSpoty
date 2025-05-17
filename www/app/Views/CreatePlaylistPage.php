@@ -13,7 +13,7 @@
 
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
-<a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
+<a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->
@@ -30,13 +30,13 @@
     <form id="createPlaylistForm" class="create-content" action="<?= route_to('playlist.store') ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <article>
-            <label> Title for playlist: </label>
+            <label><?= lang('homepage.p_form_title')?></label>
             <input type="text" name="playlist_name" value="<?= esc($old['playlist_name'] ?? '') ?>">
             <?php if (isset($errors['playlist_name'])): ?>
                 <div class="error"><?= esc($errors['playlist_name']) ?></div>
             <?php endif; ?>
 
-            <label>Introduce Image</label>
+            <label><?= lang('homepage.p_form_img')?></label>
             <input type="file" name="playlist_image" value="<?= esc($old['playlist_image'] ?? '') ?>">
             <?php if (isset($errors['playlist_image'])): ?>
                 <div class="error"><?= esc($errors['playlist_image']) ?></div>
@@ -44,7 +44,7 @@
         </article>
 
         <footer class="sumbit-button">
-            <button type="submit" name="action" value="createPlaylist" class="btn create"> Create </button>
+            <button type="submit" name="action" value="createPlaylist" class="btn create"><?= lang('homepage.create')?></button>
         </footer>
     </form>
     <div id="success-message" style="color: green;"></div>

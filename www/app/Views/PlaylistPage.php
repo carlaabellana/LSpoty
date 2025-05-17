@@ -13,7 +13,7 @@
 
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
-<a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
+<a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->
@@ -36,7 +36,7 @@
                 <p class="user-name"><strong><?= lang('HomePage.user')?></strong> <?= esc($playlist['playlist_user']) ?> </p>
                 <p><strong><?= lang('HomePage.creation')?></strong> <?= esc($playlist['playlist_creationDate']) ?> </p>
                 <p><strong><?= lang('HomePage.duration')?></strong> <?= esc($playlistDuration) ?></p>
-                <button type="button" class="add-playlist">Save playlist</button>
+                <button type="button" class="add-playlist"><?= lang('HomePage.save')?></button>
             </div>
         </section>
 

@@ -22,4 +22,6 @@ return [
     'card_4'          => 'Vibras para Estudiar',
     'card_5'          => 'Sesiones de Estudio',
     'card_6'          => 'Beats Relajantes',
+
+    'Landing'         => 'Bienvenida',
 ];

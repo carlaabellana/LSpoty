@@ -13,32 +13,37 @@ Artist | LSpoty
 
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
-<a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
+<a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <main class="artist-main"
-<section class="artist-banner">
-    <figure class="artist-image">
-        <img src="<?= esc($artist_image) ?>" alt="Artist picture" onerror="this.onerror=null;this.src='/IMAGES/Generic_Artist.jpg'" >
-    </figure>
-    <div class="artist-info">
-        <h1 class="artist-name"><?= esc($artist_Date) ?></h1>
-        <p class="artist-joined"><?= lang('HomePage.union')?> <?= esc($join_date) ?></p>
-    </div>
-</section>
+    <!--Main information of the artis will be showed here-->
+    <section class="artist-banner">
+        <!--Artist profile picture-->
+        <figure class="artist-image">
+            <img src="<?= esc($artist_image) ?>" alt="Artist picture" onerror="this.onerror=null;this.src='/IMAGES/Generic_Artist.jpg'" >
+        </figure>
 
-<section class="artist-albums">
-    <h2>Albums</h2>
-    <div class="album-list">
-        <?php foreach ($albumsList as $album): ?>
-        <a href="<?= route_to('album.get', $album['id']) ?>" class="album-card">
-                <img src="<?= esc($album['image']) ?>" alt="<?= esc($album['name']) ?> cover">
-                <p class="album-title"><?= esc($album['name']) ?></p>
-        </a>
-        <?php endforeach; ?>
-    </div>
-</section>
+        <!--artist name and join date will be showed here-->
+        <div class="artist-info">
+            <h1 class="artist-name"><?= esc($artist_Date) ?></h1>
+            <p class="artist-joined"><?= lang('HomePage.union')?> <?= esc($join_date) ?></p>
+        </div>
+    </section>
+
+    <!--A list with all the albums will be rendered here, upon clicked we can see more of them-->
+    <section class="artist-albums">
+        <h2><?= lang('HomePage.albums')?></h2>
+        <div class="album-list">
+            <?php foreach ($albumsList as $album): ?>
+            <a href="<?= route_to('album.get', $album['id']) ?>" class="album-card">
+                    <img src="<?= esc($album['image']) ?>" alt="<?= esc($album['name']) ?> cover">
+                    <p class="album-title"><?= esc($album['name']) ?></p>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </section>
 </main>
 <?= $this->endSection() ?>

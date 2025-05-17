@@ -50,4 +50,21 @@ return [
 
     'err_crate_p_title' => 'Por favor dale un nombre a tu lista.',
     'succ_create_p'     => 'Tu lista ha sido creado.',
+
+    'return_home'      => '← Retornar página principal',
+    'my_playlists'     => 'Mis listas🎧',
+    'new_playlist'     => '+ Nueva Lista',
+    'playlist_details' => 'Selecciona una lista para ver sus detalles',
+    'playlist_title'   => 'Mis listas',
+    'create'           => 'Crear',
+    'p_form_title'     => 'Título para la lista: ',
+    'p_form_img'       => 'Introduce una imagen: ',
+    'home'             => 'Principal',
+    'save'             => 'Guardar lista',
+    'albums'           => 'Álbunes',
+
+    'del_playlist'     => 'Borrar Lista',
+    'update_playlist'  => 'Guardar',
+    'song-soon'        => '♫ Canciones muy pronto… ',
+    'tracks'           => 'Canciones',
 ];

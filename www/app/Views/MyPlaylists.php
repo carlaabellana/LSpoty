@@ -3,7 +3,7 @@
 
 <!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
-My Playlists | LSpoty
+<?= lang('homepage.playlist_title')?> | LSpoty
 <?= $this->endSection() ?>
 
 <!--We link the CSS to format the page-->
@@ -13,15 +13,15 @@ My Playlists | LSpoty
 
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
-<a href="<?= base_url('/home') ?>" class="home-link">← Back to Home</a>
+<a href="<?= base_url('/home') ?>" class="home-link"><?= lang('homepage.return_home')?></a>
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <div class="playlist-dashboard">
     <div class="playlist-sidebar">
-        <h2>My Playlists🎧</h2>
-        <a href="<?= route_to('playlist.create') ?>" class="create-btn">+ New Playlist</a>
+        <h2><?= lang('homepage.my_playlists')?></h2>
+        <a href="<?= route_to('playlist.create') ?>" class="create-btn"><?= lang('homepage.new_playlist')?></a>
         <div class="playlist-list">
             <?php foreach ($playlists as $playlist): ?>
                 <div class="playlist-card" data-id="<?= $playlist['id'] ?>">
@@ -39,7 +39,7 @@ My Playlists | LSpoty
     </div>
 
     <div id="playlist-detail" class="playlist-detail">
-        <p>Select a playlist to view details</p>
+        <p><?= lang('homepage.playlist_details')?></p>
     </div>
 </div>
 <script>

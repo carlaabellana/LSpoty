@@ -8,7 +8,7 @@ UserPage | LSpoty
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/Profile_style.css">
+<link rel="stylesheet" href="/CSS/Profile_styles.css">
 <?= $this->endSection() ?>
 
 <!-- Center of the Navbar, allows the user to return to homepage -->
