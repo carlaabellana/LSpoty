@@ -4,10 +4,18 @@ return [
     //Search bar
     'search' => 'Buscar...',
 
-    'option1' => 'Pistas',
+    'option1' => 'Canciones',
     'option2' => 'Albumes',
     'option3' => 'Artistas',
-    'option4' => 'Listas',
+    'option4' => 'Playlists',
+
+    //homepage
+    'AlbumsMessage' => 'Albumes para ti:',
+    'ArtistsMessage' => 'Artistas para ti:',
+    'PlaylistsMessage' => 'Playlists para ti:',
+    'TracksMessage' => 'Canciones para ti:',
+    'SearchMessage' => 'Tus resultados:',
+    'NoResultsMessage' => 'Ningún resultado encontrado.',
 
     //header
     'myPlaylists' => 'Mis playlists ',

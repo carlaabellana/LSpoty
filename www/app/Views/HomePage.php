@@ -33,55 +33,82 @@
 <?= $this->section('content') ?>
     <?php
     if ($type === '') {
-        echo '<div id = "albums">'.'<h3>Alums you might like</h3> <div>';
-        foreach ($albums as $album) {
-            echo '<div class="albums">
+        if ($albums !== []) {
+            echo '<div id = "albums">'.'<h3>'.lang("Homepage.AlbumsMessage").'</h3> <div>';
+            foreach ($albums as $album) {
+                echo '<div class="albums">
                 <a href = "'.base_url("album/".$album->id).'">
                     <img src="'.$album->cover.'" alt="">
                     <p>' . $album->name . '</p>
                 </a>
             </div>';
+            }
+            echo '</div></div>';
         }
-        echo '</div></div>';
 
-        echo '<div id = "artists">'.'<h3>Artists you might like</h3> <div>';
-        foreach ($artists['results'] as $artist) {
-            echo '<div class="artists">
+        if ($artists['results'] !== []) {
+            echo '<div id = "artists">'.'<h3>'.lang("Homepage.ArtistsMessage").'</h3> <div>';
+            foreach ($artists['results'] as $artist) {
+                if ($artist["image"] === ""){
+                    $artist["image"] = "/IMAGES/artistPfp.jpg";
+                }
+                echo '<div class="artists">
                 <a href = "'.base_url("artist/".$artist["id"]).'">
                     <img src="'.$artist["image"].'" alt="">
                     <p>' . $artist["name"] . '</p>
                 </a>
             </div>';
+            }
+            echo '</div> </div>';
         }
-        echo '</div> </div>';
 
-        echo '<div id = "playlists">'.'<h3>Artists you might like</h3> <div>';
-        foreach ($playlists['results'] as $playlist) {
-            echo '<div class="playlists">
+        if ($playlists['results'] !== []) {
+            echo '<div id = "playlists">'.'<h3>'.lang("Homepage.PlaylistsMessage").'</h3> <div>';
+            foreach ($playlists['results'] as $playlist) {
+                echo '<div class="playlists">
                 <a href = "'.base_url("playlist/".$playlist["id"]).'">
                     <img src="'.$playlists["cover"].'" alt="">
                     <p>' . $playlist["name"] . '</p>
                 </a>
             </div>';
+            }
+            echo '</div></div>';
         }
-        echo '</div></div>';
+        if ($albums === [] && $artists['results'] === [] && $playlists['results'] === []) {
+            echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3> ';
+        }
+
     } elseif ($type !== 'track') {
-        echo '<div id = "'.$type.'s">'.'<h3>your search results:</h3> <div>';
-        foreach ($results as $result) {
-            echo '<div class="'.$type.'">
+        if ($results !== []) {
+            echo '<div id = "'.$type.'s">'.'<h3>'.lang("Homepage.SearchMessage").'</h3> <div>';
+            foreach ($results as $result) {
+                if (!isset($result["image"]) || ($result["image"] === "" && $type === "track")) {
+                    $result["image"] = "/IMAGES/playlistCover.jpg";
+                }
+                if ($result["image"] === "" && $type === "artist") {
+                    $result["image"] = "/IMAGES/artistPfp.jpg";
+                }
+                echo '<div class="'.$type.'s">
             <a href = "'.base_url($type."/".$result["id"]).'">
                     <img src="'.$result["image"].'" alt="">
                     <p>' . $result["name"] . '</p>
                 </a>
             </div>';
+            }
+            echo '</div></div>';
+        } else {
+            echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3> ';
         }
-        echo '</div></div>';
     } else {
-        echo '<div id = "'.$type.'s">'.'<h3>your tracks search results:</h3> <div>';
 
-        foreach ($results as $track) {
-            //echo get_class($track);
-            echo $track->generateView();
+        if ($results !== []) {
+
+            echo '<div id = "'.$type.'s">'.'<h3>'.lang("Homepage.TracksMessage").'</h3> <div>';
+            foreach ($results as $track) {
+                echo $track->generateView();
+            }
+        }else {
+            echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3> ';
         }
     }
     ?>

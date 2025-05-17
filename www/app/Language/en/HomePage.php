@@ -9,6 +9,14 @@ return [
     'option3' => 'Artists',
     'option4' => 'Playlists',
 
+    //homepage
+    'AlbumsMessage' => 'Albums for you:',
+    'ArtistsMessage' => 'Artists for you:',
+    'PlaylistsMessage' => 'Playlists for you:',
+    'TracksMessage' => 'Tracks for you:',
+    'SearchMessage' => 'Your search results:',
+    'NoResultsMessage' => 'No results for your search.',
+
     //header
     'myPlaylists' => 'My playlists ',
 
