@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use CodeIgniter\Controller;
 
-class UserPageController extends Controller {
+class UserPageController extends BaseController {
 
     public function index() {
         $session = session();
