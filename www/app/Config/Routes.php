@@ -40,7 +40,10 @@ $routes->group('profile', ['namespace' => 'App\Controllers', 'filter' => 'regist
 
 //Faltan las de artist
 $routes->get('artist/(:num)', 'ArtistController::show/$1', ['as' => 'artist.get', 'filter' => 'registeredAuth']);
+$routes->post('artist/(:num)', 'ArtistController::handlePost/$1', ['as' => 'artist.post', 'filter' => 'registeredAuth']);
+
 $routes->get('album/(:num)', 'AlbumsController::show/$1', ['as' => 'album.get', 'filter' => 'registeredAuth']);
+$routes->post('album/(:num)', 'AlbumsController::handlePost/$1', ['as' => 'album.post', 'filter' => 'registeredAuth']);
 
 //Routes related to the playlists from the API, some actions will be related with my playlists.
 $routes->group('playlist/(:num)', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {
