@@ -15,9 +15,9 @@ class HomePageController extends BaseController
         $query = $_GET['query'] ?? '';
 
         if ($filter === '') {
-            $apiUrl1 = "https://api.jamendo.com/v3.0/albums/?client_id=9d42fee4";
-            $apiUrl2 = "https://api.jamendo.com/v3.0/artists/?client_id=9d42fee4";
-            $apiUrl3 = "https://api.jamendo.com/v3.0/playlists/?client_id=9d42fee4";
+            $apiUrl1 = "https://api.jamendo.com/v3.0/albums/?client_id=9d42fee4&limit=9";
+            $apiUrl2 = "https://api.jamendo.com/v3.0/artists/?client_id=9d42fee4&limit=9";
+            $apiUrl3 = "https://api.jamendo.com/v3.0/playlists/?client_id=9d42fee4&limit=9";
 
             if ($query !== '') {
                 $apiUrl1 = $apiUrl1."&namesearch=".$query;
@@ -31,7 +31,11 @@ class HomePageController extends BaseController
                 $album = new Album($album);
                 $albums[$key] = $album;
             }
-            $body['albums'] = $albums;
+            if (isset($albums)) {
+                $body['albums'] = $albums;
+            } else {
+                $body['albums'] = [];
+            }
 
             $response = $client->request('GET', $apiUrl2);
             $body['artists'] = json_decode($response->getBody(), true);
@@ -41,9 +45,9 @@ class HomePageController extends BaseController
 
         }else{
             if ($query !== '') {
-                $apiUrl = "https://api.jamendo.com/v3.0/".$filter."/?client_id=9d42fee4&namesearch=".$query;
+                $apiUrl = "https://api.jamendo.com/v3.0/".$filter."/?client_id=9d42fee4&limit=27&namesearch=".$query;
             } else {
-                $apiUrl = "https://api.jamendo.com/v3.0/".$filter."/?client_id=9d42fee4";
+                $apiUrl = "https://api.jamendo.com/v3.0/".$filter."/?client_id=9d42fee4&limit=27";
             }
             $response = $client->request('GET', $apiUrl);
             $body = json_decode($response->getBody(), true);
@@ -51,13 +55,9 @@ class HomePageController extends BaseController
                 $tracks = [];
                 foreach ($body['results'] as $key => $track) {
                     $newTrack = new Track($track);
-                    //echo get_class($track);
                     $tracks[$key] = $newTrack;
-
                 }
                 $body['results'] = $tracks;
-
-
             }
         }
 
@@ -65,9 +65,6 @@ class HomePageController extends BaseController
         $filter = substr($filter, 0, ($size-1));
         $body['type'] = $filter;
 
-
-        //return get_class($body['response'][0]);
-        //echo implode( " ", $body['albums']['results'][0]);
         return view('HomePage', $body);
     }
 }
