@@ -179,13 +179,13 @@ body {
 }
 @media (max-width: 600px) {
     body {
-        background: var(--bg); /* elimina el fondo amarillo */
+        background: var(--bg);
         margin: 0;
         padding: 0;
     }
 
     .user-content {
-        margin: 5em auto var(--gap); /* menor margen superior */
+        margin: 5em auto var(--gap);
         padding: 1rem;
         width: 100%;
         box-sizing: border-box;
