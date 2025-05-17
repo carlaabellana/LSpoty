@@ -1,18 +1,22 @@
-<!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages -->
+<!--Extending from the Logged BaseView contains the general elements of the file. For avoid repeating common elements trough pages -->
 <?= $this->extend('LogBaseView') ?>
 
+<!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
 UserPage | LSpoty
 <?= $this->endSection() ?>
 
+<!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
 <link rel="stylesheet" href="/CSS/Profile_style.css">
 <?= $this->endSection() ?>
 
+<!-- Center of the Navbar, allows the user to return to homepage -->
 <?= $this->section('centerNav') ?>
     <a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
+<!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <?php if (empty($editUserMode)): ?>
     <section class="user-content">

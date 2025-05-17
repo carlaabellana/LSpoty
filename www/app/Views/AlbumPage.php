@@ -1,4 +1,4 @@
-<!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages-->
+<!--Extending from Logged BaseView contains the general elements of the file. For avoid repeating common elements trough pages-->
 <?= $this->extend('LogBaseView') ?>
 
 <!--Title of the page will appear on the navbar-->
@@ -11,15 +11,17 @@
 <link rel="stylesheet" href="/CSS/Album.css">
 <?= $this->endSection() ?>
 
+<!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
 <a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
+<!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <main class="album-main">
 
+    <!--Here the
     <article aria-labelledby="album-title">
-
         <section class="album-banner">
             <figure class="album-image" role="img" aria-label="Album cover">
                 <img src="<?= esc($album->cover) ?>"

@@ -1,0 +1,142 @@
+:root {
+    --gap: 20px;
+    --radius: 40px;
+    --bg: #f9f7f3;
+    /* Buttons */
+    --primary: #e2979b;
+    --primary-dark: #b4818a;
+    --btn-radius: 4px;
+    --btn-padding: 0.75rem 1.5rem;
+    /* Typography */
+    --font-sans: 'Poppins', sans-serif;
+    --font-head: 'Montserrat', sans-serif;
+}
+
+/* Layout styles */
+.create-content {
+    padding: 2em;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 30vh;
+}
+
+.create-playlist-main form {
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    background: #fff;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: var(--font-sans);
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Form Labels styling */
+.create-playlist-main label {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Inputs Styling */
+.create-playlist-main input[type="text"],
+.create-playlist-main input[type="file"] {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font: 1rem var(--font-sans);
+    border: 2px solid #FFB4A2;
+    border-radius: var(--btn-radius);
+    transition: border-color .2s ease;
+    margin: 0 0 var(--gap) 0;
+    box-sizing: border-box;
+}
+
+.create-playlist-main input:focus {
+    outline: none;
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 0 2px rgba(226, 151, 155, 0.2);
+}
+
+/* Errors */
+.create-playlist-main .error {
+    color: #c83656;
+    font-size: 0.875rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons Styling */
+.create-playlist-main .sumbit-button {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.create-playlist-main .btn {
+    font-size: 1rem;
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.create-playlist-main .btn.create {
+    background-color: var(--primary);
+    border: none;
+    color: #fff;
+}
+
+.create-playlist-main .btn.create:hover,
+.create-playlist-main .btn.create:focus {
+    background-color: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+.create-playlist-main .btn.cancel {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.create-playlist-main .btn.cancel:hover,
+.create-playlist-main .btn.cancel:focus {
+    background-color: rgba(226, 151, 155, 0.1);
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .create-content {
+        padding: 1rem;
+    }
+    .create-playlist-main form {
+        margin: 1rem auto;
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+    .create-playlist-main label {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+    }
+    .create-playlist-main input[type="text"],
+    .create-playlist-main input[type="file"] {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    .create-playlist-main .sumbit-button {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .create-playlist-main .btn {
+        width: 100%;
+        padding: 0.6rem 0;
+    }
+}

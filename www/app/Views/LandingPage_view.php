@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/CSS/LandingPage_styles.css">
 <?= $this->endSection() ?>
 
+<!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <body>
 <!--LSpoty-introduction Section, this is to attract the new user to use the app.-->

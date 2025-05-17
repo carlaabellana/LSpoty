@@ -1,4 +1,4 @@
-<!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages-->
+<!--Extending from Logged BaseView contains the general elements of the file. For avoid repeating common elements trough pages-->
 <?= $this->extend('LogBaseView') ?>
 
 <!--Title of the page will appear on the navbar-->
@@ -11,20 +11,24 @@
 <link rel="stylesheet" href="/CSS/PlaylistView.css">
 <?= $this->endSection() ?>
 
+<!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
 <a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
+<!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <main class="playlist-main">
-
     <article aria-labelledby="playlist-title">
 
+        <!--Here the general information of the playlist will be shown-->
         <section class="playlist-banner">
+            <!--Cover of the playlist-->
             <figure class="playlist-image" role="img" aria-label="Playlist Cover">
                 <img src="/IMAGES/playlistCover.jpg" alt="Playlist Cover" >
             </figure>
 
+            <!--Data of playlist like title, the user who created it, date of creation and duration of the playlist-->
             <div class="playlist-information-I">
                 <h1 id="playlist-title" class="playlist-title">
                     <?= esc($playlist['playlist_title']) ?>
@@ -36,6 +40,7 @@
             </div>
         </section>
 
+        <!--Here all the tracks of the playlist will be uploaded into the view-->
         <section class="track-list">
             <?php if (empty($tracks)): ?>
                 <p><?= lang('HomePage.empty_playlist')?></p>

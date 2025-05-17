@@ -1,15 +1,22 @@
+<!--Extending from the Logged BaseView contains the general elements of the file. For avoid repeating common elements trough pages -->
 <?= $this->extend('LogBaseView') ?>
 
-<?= $this->section('title') ?>My Playlists | LSpoty<?= $this->endSection() ?>
+<!--Title of the page will appear on the navbar-->
+<?= $this->section('title') ?>
+My Playlists | LSpoty
+<?= $this->endSection() ?>
 
+<!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
 <link rel="stylesheet" href="/CSS/MyPlaylists_styles.css">
 <?= $this->endSection() ?>
 
+<!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
 <a href="<?= base_url('/home') ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
+<!--Content we will render in the page html-->
 <?= $this->section('content') ?>
 <div class="playlist-dashboard">
     <div class="playlist-sidebar">
