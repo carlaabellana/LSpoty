@@ -1,0 +1,79 @@
+body {
+    background-color: #FFCDB2;
+    font-family: 'Poppins', sans-serif;
+    color: #3a3a3a;
+    margin: 0;
+    padding: 0;
+}
+
+.playlist-dashboard {
+    display: flex;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.playlist-sidebar {
+    width: 300px;
+    background-color: #FFB4A2;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.playlist-sidebar h2 {
+    font-size: 22px;
+    color: #B5828C;
+    margin-bottom: 10px;
+}
+
+.create-btn {
+    display: inline-block;
+    background-color: #B5828C;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.create-btn:hover {
+    background-color: #E5989B;
+}
+
+.playlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.playlist-card {
+    display: flex;
+    align-items: center;
+    background-color: #FFE7D9;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.playlist-card:hover {
+    transform: scale(1.02);
+    background-color: #FFF0EA;
+}
+
+.playlist-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.playlist-detail {
+    flex: 1;
+    background-color: #FFF7F3;
+    padding: 30px;
+    overflow-y: auto;
+}
