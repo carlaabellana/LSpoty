@@ -5,6 +5,7 @@
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1em solid pink;
 }
 
 .artist-banner {
@@ -42,6 +43,15 @@
 
 .album-card {
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.album-card .album-title {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    text-decoration: none;
 }
 
 .album-card img {

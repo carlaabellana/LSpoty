@@ -41,4 +41,10 @@ return [
     //Preposition
     'Preposition' => 'de',
     'bye'         => 'Salir',
+
+    //Playlists
+    'user'              => 'Usuario creador: ',
+    'creation'          => 'Fecha de creación: ',
+    'empty_playlist'    => 'La playlist se encuentra vacía.',
+    'union'             => 'Se unió: ',
 ];

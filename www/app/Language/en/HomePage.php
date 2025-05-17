@@ -41,4 +41,10 @@ return [
     //Preposition
     'Preposition' => 'of',
     'bye'         => 'Log out',
+
+    //Playlists
+    'user'              => 'User creator: ',
+    'creation'          => 'Creation date: ',
+    'empty_playlist'    => 'This playlist is empty.',
+    'union'             => 'Joined: ',
 ];

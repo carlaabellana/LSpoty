@@ -8,7 +8,7 @@
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/AlbumView.css">
+<link rel="stylesheet" href="/CSS/Album.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('centerNav') ?>
@@ -31,7 +31,9 @@
                     <?= esc($album->name) ?>
                 </h1>
                 <p class="artist-name">
+                    <a href="<?= route_to('artist.get', $album->artistId) ?>" class="artist-link">
                     <?= esc($album->artist) ?>
+                    </a>
                 </p>
             </div>
         </section>

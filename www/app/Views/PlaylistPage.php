@@ -8,7 +8,7 @@
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/PlaylistView_styles.css">
+<link rel="stylesheet" href="/CSS/PlaylistView.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('centerNav') ?>
@@ -22,22 +22,23 @@
 
         <section class="playlist-banner">
             <figure class="playlist-image" role="img" aria-label="Playlist Cover">
-
+                <img src="/IMAGES/playlistCover.jpg" alt="Playlist Cover" >
             </figure>
 
             <div class="playlist-information-I">
                 <h1 id="playlist-title" class="playlist-title">
                     <?= esc($playlist['playlist_title']) ?>
                 </h1>
-                <p class="user-name"><strong>User Creator: </strong> <?= esc($playlist['playlist_user']) ?> </p>
-                <p><strong>Creation Date: </strong> <?= esc($playlist['playlist_creationDate']) ?> </p>
-                <p><strong>Total length: </strong> <?= esc($playlistDuration) ?></p>
+                <p class="user-name"><strong><?= lang('HomePage.user')?></strong> <?= esc($playlist['playlist_user']) ?> </p>
+                <p><strong><?= lang('HomePage.creation')?></strong> <?= esc($playlist['playlist_creationDate']) ?> </p>
+                <p><strong><?= lang('HomePage.duration')?></strong> <?= esc($playlistDuration) ?></p>
+                <button type="button" class="add-playlist">Save playlist</button>
             </div>
         </section>
 
         <section class="track-list">
             <?php if (empty($tracks)): ?>
-                <p>This playlist is empty.</p>
+                <p><?= lang('HomePage.empty_playlist')?></p>
             <?php else: ?>
 
                 <?php foreach ($tracks as $track): ?>
