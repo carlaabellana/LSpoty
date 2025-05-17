@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="/CSS/AlbumView.css">
 <?= $this->endSection() ?>
 
+<?= $this->section('centerNav') ?>
+<a href="<?= base_url('/home'); ?>" class="home-link">← Back to Home</a>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <main class="album-main">

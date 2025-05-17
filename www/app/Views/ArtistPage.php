@@ -8,6 +8,10 @@ Artist | LSpoty
 <link rel="stylesheet" href="/CSS/ArtistView_styles.css">
 <?= $this->endSection() ?>
 
+<?= $this->section('centerNav') ?>
+<a href="<?= base_url('/home'); ?>" class="home-link">← Back to Home</a>
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 
 <main class="artist-main"
