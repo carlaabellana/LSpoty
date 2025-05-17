@@ -8,7 +8,7 @@
 </head>
     <body>
         <header>
-            <a href="<?= base_url('/home ');?>"><img src="<?= base_url('/logoTemp.png');?>" alt="Logo" id="logo"></a>
+            <a href="<?= route_to('home.get'); ?>"><img src="<?= base_url('/logoTemp.png');?>" alt="Logo" id="logo"></a>
             <!--center nav: para poner algo en el centro de la barra de nav (nada / seach bar)-->
             <div id="center"><?=$this->renderSection('centerNav')?></div>
             <!--side nav: para poner algo en el lado de la barra de nav ex (botones log in / boton myplaylists, user, log out /+ boton main menu etc)-->

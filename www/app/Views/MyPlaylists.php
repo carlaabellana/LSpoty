@@ -14,7 +14,7 @@
 <div class="playlist-dashboard">
     <div class="playlist-sidebar">
         <h2>My Playlists🎧</h2>
-        <a href="<?= base_url('/create-playlist') ?>" class="create-btn">+ New Playlist</a>
+        <a href="<?= route_to('playlist.create') ?>" class="create-btn">+ New Playlist</a>
         <div class="playlist-list">
             <?php foreach ($playlists as $playlist): ?>
                 <div class="playlist-card" data-id="<?= $playlist['id'] ?>">

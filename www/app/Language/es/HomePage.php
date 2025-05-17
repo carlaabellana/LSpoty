@@ -47,4 +47,7 @@ return [
     'creation'          => 'Fecha de creación: ',
     'empty_playlist'    => 'La lista se encuentra vacía.',
     'union'             => 'Se unió: ',
+
+    'err_crate_p_title' => 'Por favor dale un nombre a tu lista.',
+    'succ_create_p'     => 'Tu lista ha sido creado.',
 ];

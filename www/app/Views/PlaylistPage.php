@@ -12,7 +12,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('centerNav') ?>
-<a href="<?= base_url('/home'); ?>" class="home-link">← Back to Home</a>
+<a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>

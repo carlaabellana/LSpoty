@@ -47,4 +47,7 @@ return [
     'creation'          => 'Creation date: ',
     'empty_playlist'    => 'This playlist is empty.',
     'union'             => 'Joined: ',
+
+    'err_crate_p_title' => 'Please give your playlist a title.',
+    'succ_create_p'     => 'Your playlist has been created.',
 ];

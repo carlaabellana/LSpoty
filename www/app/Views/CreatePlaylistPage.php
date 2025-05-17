@@ -12,23 +12,34 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('centerNav') ?>
-<a href="<?= base_url('/home'); ?>" class="home-link">← Back to Home</a>
+<a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
 <?= $this->endSection() ?>
 
 
 <?= $this->section('content') ?>
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+<?php endif; ?>
+
+<?php $errors = session()->getFlashdata('errors') ?? []; ?>
+
 <main class="create-playlist-main">
     <form id="createPlaylistForm" class="create-content" action="<?= route_to('playlist.store') ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <article>
             <label> Title for playlist: </label>
-            <input type="text" name="playlistname">
-            <div class="error" id="playlistName-error"></div>
+            <input type="text" name="playlist_name" value="<?= esc($old['playlist_name'] ?? '') ?>">
+            <?php if (isset($errors['playlist_name'])): ?>
+                <div class="error"><?= esc($errors['playlist_name']) ?></div>
+            <?php endif; ?>
 
             <label>Introduce Image</label>
-            <input type="file" name="playlist_image">
-            <div class="error" id="playlistImage-error"></div>
-
+            <input type="file" name="playlist_image" value="<?= esc($old['playlist_image'] ?? '') ?>">
+            <?php if (isset($errors['playlist_image'])): ?>
+                <div class="error"><?= esc($errors['playlist_image']) ?></div>
+            <?php endif; ?>
         </article>
 
         <footer class="sumbit-button">
