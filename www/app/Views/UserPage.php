@@ -6,7 +6,7 @@ UserPage | LSpoty
 <?= $this->endSection() ?>
 
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/UserPage_styles.css">
+<link rel="stylesheet" href="/CSS/Profile_style.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('centerNav') ?>
