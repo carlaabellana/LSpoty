@@ -32,4 +32,5 @@ return [
 
     //Preposition
     'Preposition' => 'of',
+    'bye'         => 'Log out',
 ];

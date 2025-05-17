@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?= $this->renderSection('title') ?></title>
     <?= $this->renderSection('CSS') ?>
-    <link rel="stylesheet" href="/CSS/BaseView_styles.css">
+    <link rel="stylesheet" href="/CSS/BaseView.css">
 </head>
 <body>
 <header>
@@ -13,8 +13,17 @@
     <div id="center"><?=$this->renderSection('centerNav')?></div>
     <div id ='right'>
         <a id="My"><?= lang('HomePage.myPlaylists')?>💕</a>
-        <img src="<?= esc($globalUserImgUrl ?? base_url('IMAGES/default_image.png')) ?>" id="userImg" alt="user">
-        <button>bye</button>
+
+        <div>
+            <a href="<?= url_to('profile.get') ?>" style="display:inline-block; border:none; background:none; padding:0; cursor:pointer;">
+                <img src="<?= esc($globalUserImgUrl ?? base_url('IMAGES/default_image.png')) ?>" id="userImg" alt="User Image">
+            </a>
+        </div>
+
+        <form action="<?= site_url('logout') ?>" method="post" style="display:inline">
+            <?= csrf_field() ?>
+            <button type="submit" class="btn cancel"><?= lang('HomePage.bye')?></button>
+        </form>
     </div>
 </header>
 

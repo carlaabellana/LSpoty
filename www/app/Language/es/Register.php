@@ -3,8 +3,8 @@
 return [
 
     // Títulos y etiquetas
-    'title_register'        => 'Regístrate para empezar a descubrir música y artistas únicos en LSpoty',
-    'title_login'           => 'Iniciar sesión | LSpoty',
+    'title_register'        => 'Regístrate',
+    'title_login'           => 'Iniciar sesión',
     'email_form'            => 'Correo electrónico:',
     'password_form'         => 'Contraseña:',
     'repeat_form'           => 'Repetir contraseña:',
@@ -20,6 +20,7 @@ return [
     'email_invalid'         => 'El correo electrónico no es válido.',
     'email_domain'          => 'Solo se aceptan correos de @students.salle.url.edu, @ext.salle.url.edu o @salle.url.edu.',
     'email_registered'      => 'El correo electrónico ya está registrado.',
+    'login_invalid'         => 'Tu correo y/o contraseña son incorrectos.',
 
     'password_required'     => 'Este campo es obligatorio.',
     'password_short'        => 'La contraseña debe tener al menos 8 caracteres.',

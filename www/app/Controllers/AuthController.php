@@ -125,12 +125,22 @@ class AuthController extends BaseController
         $password = $this->request->getPost('password');
 
         $userModel = new \App\Models\UserModel();
-        $user = $userModel->where('email', $email)->first();
 
-        if (!$user) {
-            $errors['email'] = 'Email not found.';
-        } elseif (!password_verify($password, $user['password'])) {
-            $errors['password'] = 'Incorrect password.';
+        if (empty($email)) {
+            $errors['email'] = lang('register.email_required');
+        }
+        if (empty($password)) {
+            $errors['password'] = lang('register.email_required');
+        }
+        if (!isset($errors['email']) && !isset($errors['password'])) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = lang('register.email_invalid');
+            } else {
+                $user = $userModel->where('email', $email)->first();
+                if (!$user || !password_verify($password, $user['password'])) {
+                    $errors['password'] = lang('register.login_invalid');;
+                }
+            }
         }
 
         if (!empty($errors)) {
@@ -143,7 +153,7 @@ class AuthController extends BaseController
             'user_id'        => $user['id'],
         ]);
 
-        return redirect()->route('profile.get');
+        return redirect()->route('home.get');
     }
     public function deleteAccount()
     {
@@ -158,5 +168,12 @@ class AuthController extends BaseController
             return redirect()->route('landing-page.get')->with('message', lang('register.account_deleted'));
         }
         return redirect()->route('landing-page.get')->with('message', lang('account_delete_failed'));
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->route('landing-page.get');
     }
 }

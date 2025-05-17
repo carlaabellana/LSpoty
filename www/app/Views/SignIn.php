@@ -5,7 +5,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/SignIn.css">
+<link rel="stylesheet" href="/CSS/SignIn_styles.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -17,7 +17,7 @@
 <?php endif; ?>
 
 <form method="post" action="<?= route_to('sign-in.post') ?>">
-    <h1>Sign In | LSpoty </h1>
+    <h1><?= lang('register.title_login')?> | LSpoty </h1>
     <label><?= lang('register.email_form') ?></label>
     <input type="text" name="email" value="<?= esc($old['email'] ?? '') ?>">
     <?php if (isset($errors['email'])): ?>

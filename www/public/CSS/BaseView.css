@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 #content{
     margin: 10px;
@@ -32,7 +33,17 @@ body{
 #right button {
     background-color: darkred;
     color: white;
+    padding:  0.75rem 1.5rem;
+    cursor: pointer;
+    transition: transform .1s ease, box-shadow .1s ease, background-color .2s ease;
 }
+
+.btn.cancel {
+    background: transparent;
+    color: #B4818AFF;
+    border: 2px solid #E2979BFF;
+}
+
 #userImg {
     height: 50px;
     border-radius: 100px;

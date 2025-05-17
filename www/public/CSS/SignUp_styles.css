@@ -2,57 +2,60 @@ body {
     background: linear-gradient(to bottom, #FFCDb2, #FFB4A2);
     font-family: 'Poppins', sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
 form {
     background-color: #fff;
-    padding: 30px 50px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(181, 130, 140, 0.3);
+    padding: 40px 60px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(181, 130, 140, 0.25);
     width: 100%;
-    max-width: 600px;
+    max-width: 620px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 h1 {
     color: #B5828C;
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
 label {
-    display: block;
-    margin-top: 15px;
     font-weight: 600;
     color: #E5989B;
+    margin-bottom: 5px;
 }
 
 input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
+input[type="password"],
+input[type="file"] {
+    padding: 10px 12px;
     border: 2px solid #FFB4A2;
     border-radius: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
     font-size: 14px;
+    box-sizing: border-box;
     transition: border-color 0.3s ease;
+    width: 100%;
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="file"]:focus {
     outline: none;
     border-color: #E5989B;
 }
 
 button {
     margin-top: 20px;
-    width: 100%;
     padding: 12px;
     background-color: #B5828C;
     color: white;
@@ -69,23 +72,11 @@ button:hover {
 }
 
 .error {
-    margin-top: 5px;
     color: #ff6b6b;
     font-size: 13px;
-}
-.register-link a {
-    color: #FFB4A2;
-    text-decoration: none;
-    font-weight: 600;
-}
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-.success-message {
-    color: #104a09;
-    text-align: center;
-    margin-bottom: 15px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .register-link {
@@ -102,3 +93,6 @@ button:hover {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+
+

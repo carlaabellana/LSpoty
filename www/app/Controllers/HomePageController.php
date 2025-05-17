@@ -13,6 +13,7 @@ class HomePageController extends BaseController
         $client = new Client();
         $filter = $_GET['filter'] ?? '';
         $query = $_GET['query'] ?? '';
+
         if ($filter === '') {
             $apiUrl1 = "https://api.jamendo.com/v3.0/albums/?client_id=9d42fee4";
             $apiUrl2 = "https://api.jamendo.com/v3.0/artists/?client_id=9d42fee4";
@@ -63,6 +64,7 @@ class HomePageController extends BaseController
         $size = strlen($filter);
         $filter = substr($filter, 0, ($size-1));
         $body['type'] = $filter;
+
 
         //return get_class($body['response'][0]);
         //echo implode( " ", $body['albums']['results'][0]);

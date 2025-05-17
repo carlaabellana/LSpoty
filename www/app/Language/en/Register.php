@@ -20,6 +20,7 @@ return [
     'email_invalid'         => 'The email address is not valid.',
     'email_domain'          => 'Only emails from @students.salle.url.edu, @ext.salle.url.edu or @salle.url.edu are accepted.',
     'email_registered'      => 'The email address is already registered.',
+    'login_invalid'         => 'Your email and/or password are incorrect.',
 
     'password_required'     => 'This field is required.',
     'password_short'        => 'The password must contain at least 8 characters.',

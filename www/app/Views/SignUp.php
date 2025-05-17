@@ -5,12 +5,12 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/SignUp.css">
+<link rel="stylesheet" href="/CSS/SignUp_styles.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <form method="post" action="<?= route_to('sign-up.post') ?>" enctype="multipart/form-data">
-    <h1><?= lang('register.title_register') ?></h1>
+    <h1><?= lang('register.title_register')?> | LSpoty </h1>
 
     <label><?= lang('register.username_form') ?></label>
     <input type="text" name="username" value="<?= esc($old['username'] ?? '') ?>">

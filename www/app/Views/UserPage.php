@@ -74,7 +74,7 @@ UserPage | LSpoty
 
             <footer class="data-buttons">
                 <button type="submit" name="action" value="updateAccount" class="btn save"><?= lang('register.save_data') ?></button>
-                <button type="submit"  name="action" value="deleteAccount" class="btn cancel" id="cancelBtn"><?= lang('register.cancel') ?></button>
+                <button type="submit" class="btn cancel" id="cancelBtn" onclick="history.back()"><?= lang('register.cancel') ?></button>
             </footer>
         </form>
     </div>

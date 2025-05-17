@@ -21,6 +21,8 @@ $routes->group('sign-in', ['namespace' => 'App\Controllers'/*, 'filters' => 'unr
     $routes->post('', 'AuthController::handleSignIn', ['as' => 'sign-in.post']);
 });
 
+$routes->post('logout', 'AuthController::logout', ['as' => 'logout.post']);
+
 $routes->group('home', ['namespace' => 'App\Controllers'/*, 'filter' => 'registeredAuth'*/], function ($routes) {
     $routes->get('', 'HomePageController::index', ['as' => 'home.get']);
 });
