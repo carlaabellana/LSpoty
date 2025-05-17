@@ -55,3 +55,6 @@ $routes->group('create-playlist', ['namespace' => 'App\Controllers'/*, 'filter' 
     $routes->post('', 'PlaylistController::store', ['as' => 'playlist.store']);
 });
 //Faltan my playlist management
+
+//Librería extra QR
+$routes->get('/qr', 'QrController::index');

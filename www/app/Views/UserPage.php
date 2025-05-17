@@ -31,6 +31,9 @@ UserPage | LSpoty
                 <h3 class="user-email"><?= esc($userPage_data['email']) ?></h3>
                 <p class="user-age"><?= lang('register.age') ?> <?= esc($userPage_data['age']) ?></p>
             </section>
+            <section>
+                <img src="<?= base_url('/qr') ?>" alt="QR personalizado" class="qr-image">
+            </section>
         </article>
         <footer class="data-buttons">
             <a href="<?= route_to('profile.get') . '?edit=1' ?>" class="btn update"><?= lang('register.change_data') ?></a>
