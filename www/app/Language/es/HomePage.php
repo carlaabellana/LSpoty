@@ -45,6 +45,6 @@ return [
     //Playlists
     'user'              => 'Usuario creador: ',
     'creation'          => 'Fecha de creación: ',
-    'empty_playlist'    => 'La playlist se encuentra vacía.',
+    'empty_playlist'    => 'La lista se encuentra vacía.',
     'union'             => 'Se unió: ',
 ];

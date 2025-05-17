@@ -11,4 +11,11 @@ class CreatePlaylistController extends BaseController
     {
         return view('CreatePlaylistPage');
     }
+
+    public function storePlaylist()
+    {
+    }
+
+
+
 }
