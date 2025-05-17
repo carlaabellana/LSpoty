@@ -12,7 +12,7 @@
             <!--center nav: para poner algo en el centro de la barra de nav (nada / seach bar)-->
             <div id="center"><?=$this->renderSection('centerNav')?></div>
             <div id ='right'>
-                <a id="My"><?= lang('HomePage.myPlaylists')?>💕</a>
+                <a id="My" href="<?= url_to('my-playlists.index') ?>"><?= lang('HomePage.myPlaylists')?>💕</a>
 
                 <div>
                     <a href="<?= url_to('profile.get') ?>" style="display:inline-block; border:none; background:none; padding:0; cursor:pointer;">
