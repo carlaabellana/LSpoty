@@ -42,7 +42,13 @@ $routes->get('artist/(:num)', 'ArtistController::show/$1', ['as' => 'artist.get'
 //$routes->get('/album', 'AlbumsController::index', ['as' => 'album.get']);
 $routes->get('album/(:num)', 'AlbumsController::show/$1', ['as' => 'album.get', 'filter' => 'registeredAuth']);
 //Faltan las de playlist
-$routes->get('playlist/(:num)', 'PlaylistsController::show/$1', ['as' => 'playlist.get', 'filter' => 'registeredAuth']);
+//$routes->get('playlist/(:num)', 'PlaylistsController::show/$1', ['as' => 'playlist.get', 'filter' => 'registeredAuth']);
+$routes->group('playlist/(:num)', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {
+    $routes->get('', 'PlaylistController::show/$1', ['as' => 'playlist.get']);
+    $routes->post('', 'PlaylistController::show/$1', ['as' => 'playlist.post']);
+});
+
+
 //Faltan las de my playlist
 
 $routes->group('create-playlist', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {

@@ -14,7 +14,6 @@ UserPage | LSpoty
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<body>
 <?php if (empty($editUserMode)): ?>
     <section class="user-content">
         <article>
@@ -79,5 +78,4 @@ UserPage | LSpoty
         </form>
     </div>
 <?php endif; ?>
-</body>
 <?= $this->endSection() ?>
