@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="/CSS/MyPlaylists_styles.css">
 <?= $this->endSection() ?>
 
+<!--We link the JavaScript to format the page-->
+<?= $this->section('JS') ?>
+<script src="/JS/MyPlaylists.js"></script>
+<?= $this->endSection() ?>
+
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
 <a href="<?= base_url('/home') ?>" class="home-link"><?= lang('homepage.return_home')?></a>
@@ -42,36 +47,4 @@
         <p><?= lang('homepage.playlist_details')?></p>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const playlistCards = document.querySelectorAll('.playlist-card');
-
-        playlistCards.forEach(card => {
-            card.addEventListener('click', function () {
-                const playlistId = this.dataset.id;
-
-                fetch(`/my-playlists/ajax/${playlistId}`)
-                    .then(response => {
-                        if (!response.ok) throw new Error('Acceso denegado');
-                        return response.text();
-                    })
-                    .then(html => {
-                        document.getElementById('playlist-detail').innerHTML = html;
-
-                        if (!document.querySelector('link[href="/CSS/MyPlaylists_detail.css"]')) {
-                            const link = document.createElement('link');
-                            link.rel = 'stylesheet';
-                            link.href = '/CSS/MyPlaylists_detail_styles.css';
-                            document.head.appendChild(link);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('No se pudo cargar la playlist.');
-                    });
-            });
-        });
-    });
-</script>
-
 <?= $this->endSection() ?>

@@ -14,7 +14,8 @@
             <button type="submit" class="save-btn"><?= lang('HomePage.update_playlist')?></button>
         </form>
 
-        <a href="<?= base_url('/delete-playlist/' . $playlist['id']) ?>" class="delete-btn"><?= lang('HomePage.del_playlist')?></a>
+        <button id="delete-playlist-btn" data-id="<?= $playlist['id'] ?>" class="btn btn-danger"><?= lang('homepage.delete') ?>
+        </button>
     </div>
 </div>
 

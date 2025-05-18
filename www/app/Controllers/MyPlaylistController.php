@@ -56,11 +56,24 @@ class MyPlaylistController extends BaseController
 
     public function delete($id)
     {
+        $session = session();
+
+        if (!$session->get('loggedIn')) {
+            return $this->response->setStatusCode(401)->setJSON(['error' => 'Not authorized']);
+        }
+
         $playlistModel = new PlaylistModel();
+        $playlist = $playlistModel->find($id);
+
+        if (!$playlist || $playlist['user_id'] !== $session->get('user_id')) {
+            return $this->response->setStatusCode(403)->setJSON(['error' => 'Access denied']);
+        }
+
         $playlistModel->delete($id);
 
-        return redirect()->to('/my-playlists')->with('success', 'Playlist deleted');
+        return $this->response->setJSON(['success' => true, 'message' => 'Playlist deleted']);
     }
+
 
     // dashboard dinámico
     public function ajax($id)

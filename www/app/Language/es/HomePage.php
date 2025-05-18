@@ -62,6 +62,7 @@ return [
     'home'             => 'Principal',
     'save'             => 'Guardar lista',
     'albums'           => 'Álbunes',
+    'delete'           => 'Eliminar',
 
     'del_playlist'     => 'Borrar Lista',
     'update_playlist'  => 'Guardar',
