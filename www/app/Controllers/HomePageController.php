@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Entities\Album;
 use App\Entities\Track;
 
+use App\Models\PlaylistModel;
+
 use GuzzleHttp\Client;
 
 /**
@@ -93,10 +95,18 @@ class HomePageController extends BaseController
             }
         }
 
-        //A singular word label is prepared.
+        //The s is removed so the filter is singular.
         $size = strlen($filter);
         $filter = substr($filter, 0, ($size-1));
         $body['type'] = $filter;
+
+        //Reading the names and ids of the user's playlist
+        $session = session();
+        $playlistsModel = new PlaylistModel();
+        $names = $playlistsModel->where('user_id', $session->get('user_id'))->findColumn('name');
+        $ids = $playlistsModel->where('user_id', $session->get('user_id'))->findColumn('id');
+        $body['PlaylistNames'] = $names;
+        $body['PlaylistIds'] = $ids;
 
         //The homepage is rendered with all the data retrieved.
         return view('HomePage', $body);

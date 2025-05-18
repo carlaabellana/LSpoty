@@ -83,7 +83,7 @@ class Track extends Entity
                 <audio>
                     <source src="'.$this->playerURL.'" type = "audio/mpeg">
                 </audio>
-            </div> <button class="add">+</button>';
+            </div> <button type="button" class="add" onclick="openPopUp()">+</button>';
         }
         $view .= '</div>';
         return $view;

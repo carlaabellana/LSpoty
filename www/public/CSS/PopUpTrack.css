@@ -1,0 +1,80 @@
+#popUp {
+    background-color: rgba(89, 67, 79, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+}
+
+.popUp-close{
+    visibility: hidden;
+}
+.popUp-open {
+    visibility: visible;
+}
+
+.redBackground{
+    background-color: red;
+    visibility: hidden;
+}
+#popUpBox{
+    width: 50%;
+    height: fit-content;
+    position: fixed;
+    background-color: #e5989B;
+    border-radius: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px 10px 10px;
+    color: white;
+}
+#head {
+    display: flex;
+}
+
+#head h3{
+    flex-grow: 1;
+    margin:0;
+}
+
+#head a {
+    margin: 10px;
+}
+
+#popUpBox form {
+    display: flex;
+    flex-direction: column;
+}
+#playlistsNames{
+    background-color: white;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#playlistsNames div {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+#playlistsNames div input[type='checkbox'] {
+    width: max-content;
+    align-self: center;
+    margin: 0;
+}
+
+#playlistsNames div label {
+    text-align: start;
+    flex-grow: 1;
+    color: #915558;
+    margin: 0;
+}
+

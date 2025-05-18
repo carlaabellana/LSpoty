@@ -11,6 +11,8 @@
 <!-- Center of the Navbar, allows the user to return to homepage -->
 <?= $this->section('CSS') ?>
     <link rel="stylesheet" href="/CSS/HomePage_styles.css">
+    <link rel="stylesheet" href="/CSS/PopUpTrack.css">
+
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->
@@ -104,17 +106,22 @@
             echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3> ';
         }
     } else {
-
         if ($results !== []) {
-
             echo '<div id = "'.$type.'s">'.'<h3>'.lang("Homepage.TracksMessage").'</h3> <div>';
             foreach ($results as $track) {
-                echo $track->generateView();
+                echo $track->generateView('playlist');
             }
         }else {
-            echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3> ';
+            echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3>';
         }
     }
+    include("AddTrackPopUp.php");
     ?>
 
+
+
+<?= $this->endSection() ?>
+
+<?= $this->section('script') ?>
+    <script src="<?= base_url('JS/AddTrackPopUp.js') ?>')"
 <?= $this->endSection() ?>
