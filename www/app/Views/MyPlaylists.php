@@ -8,7 +8,7 @@
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/MyPlaylists_styles.css">
+<link rel="stylesheet" href="/CSS/MyPlaylists_cards.css">
 <?= $this->endSection() ?>
 
 <!--We link the JavaScript to format the page-->
@@ -38,6 +38,10 @@
                     ?>
                     <img src="<?= $coverUrl ?>" alt="Cover" class="playlist-cover">
                     <span><?= esc($playlist['name']) ?></span>
+
+                    <a href="<?= route_to('my-playlists.concrete', $playlist['id']) ?>" class="btn btn-view create-btn " role="button">
+                        +
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

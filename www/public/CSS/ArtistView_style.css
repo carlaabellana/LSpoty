@@ -1,0 +1,120 @@
+/* Base styles */
+.artist-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1em solid pink;
+}
+
+.artist-banner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.artist-image img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.artist-info {
+    flex: 1;
+}
+
+.artist-info .artist-name {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.artist-joined {
+    color: #666;
+}
+
+.artist-albums h2 {
+    margin-bottom: 1rem;
+}
+
+.album-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.album-card {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.album-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.album-card .album-title {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .artist-banner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .artist-image img {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 1rem;
+    }
+
+    .artist-info .artist-name {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+
+    .album-list {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .artist-main {
+        padding: 1rem;
+        border-width: 0.5em;
+    }
+
+    .artist-image img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .artist-info .artist-name {
+        font-size: 1.5rem;
+    }
+
+    .artist-joined {
+        font-size: 0.85rem;
+    }
+
+    .album-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .album-card .album-title {
+        font-size: 0.8rem;
+    }
+}

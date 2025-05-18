@@ -52,17 +52,17 @@ $routes->group('playlist/(:num)', ['namespace' => 'App\Controllers', 'filter' =>
 });
 
 
-//My playlists
+//My playlists, general view to see all user's playlist, navigate to create a new playlist, navigate to see a playlist or modify a playlist.
 $routes->get('/my-playlists', 'MyPlaylistController::index', ['as' => 'my-playlists.index']);
-//Ver una playlist en concreto
-
-//Editar una playlist
+//My playlists, view for a concrete playlist allows to reproduce the data and see all the data of tha user's playlist.
+$routes->get('/my-playlists/(:num)', 'MyPlaylistController::concrete/$1', ['as' => 'my-playlists.concrete']);
+//My playlists allow to modify the information of a playlist.
 $routes->post('/my-playlists/(:num)', 'MyPlaylistController::update/$1');
 
-//AJAX vista dinámica
+//Dinalic view for my playlists.
 $routes->get('my-playlists/ajax/(:num)', 'MyPlaylistController::ajax/$1');
 
-//AJAX eliminar playlist
+//AJAX to DELETE a playlist.
 $routes->delete('/my-playlists/(:num)', 'MyPlaylistController::delete/$1', ['as' => 'playlist.delete']);
 
 $routes->put('/my-playlists/(:any)/track/(:any)', 'MyPlaylistController::addTrack/$1/$2');
@@ -85,11 +85,12 @@ $routes->group('/my-playlists', ['namespace' => 'App\Controllers', 'filter' => '
 //});
 $routes->put('/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
 
-//CREATE PLAYLIST AJAX
+//AJAX to CREATE a playlist
 $routes->match(['put', 'post'], '/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
 $routes->get('/create-playlist', 'MyPlaylistController::createForm', ['as' => 'playlist.create']);
+$routes->post('/create-playlist', 'MyPlaylistController::createForm', ['as' => 'playlist.create.post']);
 
-//Añadir playlist desde jamendo
+//Save a playlist from Jamendo.
 $routes->post('/save-from-jamendo/(:segment)', 'MyPlaylistController::saveFromJamendo/$1');
 
 //External Library to add QR.

@@ -22,14 +22,3 @@
     </div>
 </div>
 
-<div class="playlist-tracks">
-    <h3><?= lang('HomePage.tracks')?></h3>
-    <p><?= lang('HomePage.song-soon')?></p>
-</div>
-
-<div class="playlist-player">
-    <button class="player-btn">⏮</button>
-    <button class="player-btn">⏸</button>
-    <button class="player-btn">⏭</button>
-    <input type="range" min="0" max="100" value="0" class="progress-bar" />
-</div>

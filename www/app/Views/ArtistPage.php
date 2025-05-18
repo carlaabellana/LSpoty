@@ -10,7 +10,7 @@ Artist | LSpoty
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/ArtistView.css">
+<link rel="stylesheet" href="/CSS/ArtistView_style.css">
 <?= $this->endSection() ?>
 
 <!--Center of the Navbar, allows the user to return to homepage-->

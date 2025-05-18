@@ -189,4 +189,59 @@ class MyPlaylistController extends BaseController
         return $this->response->setStatusCode(200)->setJson(['responseData' => 'All es gut']);
     }
 
+    public function concrete($id) {
+
+        if ($id === null) {
+            throw PageNotFoundException::forPageNotFound("The playlist does not exsist.");
+        }
+
+        //The id of the user is searched to link it to the playlist.
+        $session = session();
+        $userId = $session->get('user_id');
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+        $username  = $user['username'] ?? $user['email'] ?? 'Unknown User';
+
+        //The playlist is retrieved based on its id and the user's ID.
+        $playlistModel = new PlaylistModel();
+        $playlist = $playlistModel
+            ->where('id', $id)
+            ->where('user_id', $userId)
+            ->first();
+        if (! $playlist) {
+            throw PageNotFoundException::forPageNotFound("Playlist not found.");
+        }
+
+        //We create a track model for each track of playlist.
+        $trackModel = new TrackModel();
+        $tracks = $trackModel
+            ->where('playlist_id', $id)
+            ->orderBy('id', 'ASC')
+            ->findAll();
+
+        //The duration is calculated.
+        $totalSeconds = array_sum(array_column($tracks, 'duration'));
+
+        $hours   = floor($totalSeconds / 3600);
+        $minutes = floor(($totalSeconds % 3600) / 60);
+        $seconds = $totalSeconds % 60;
+
+        $formattedDuration = '';
+        if ($hours)   $formattedDuration .= $hours   . 'h ';
+        if ($minutes) $formattedDuration .= $minutes . 'm ';
+        $formattedDuration .= $seconds . 's';
+
+        //The data is introduced in the variable to send it to the view.
+        $data = [
+            'playlist_title'        => $playlist['name'],
+            'playlist_user'         => $username,
+            'playlist_creationDate' => date('Y-m-d', strtotime($playlist['created_at'])),
+            'playlistDuration'      => $formattedDuration,
+            'cover'                 => $playlist['cover'],
+            'tracks'                => $tracks,
+        ];
+
+        return view('MyPlaylistsView', $data);
+    }
+
 }
