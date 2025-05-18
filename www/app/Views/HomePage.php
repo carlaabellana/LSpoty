@@ -5,12 +5,12 @@
 
 <!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
-<?= lang('homepage.home')?> | LSpoty
+Homepage | LSpoty
 <?= $this->endSection() ?>
 
 <!-- Center of the Navbar, allows the user to return to homepage -->
 <?= $this->section('CSS') ?>
-    <link rel="stylesheet" href="/CSS/HomePage_styles.css">
+    <link rel="stylesheet" href="/CSS/HomePage.css">
     <link rel="stylesheet" href="/CSS/PopUpTrack.css">
 
 <?= $this->endSection() ?>

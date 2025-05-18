@@ -10,12 +10,12 @@ UserPage | LSpoty
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/Profile_styles.css">
+<link rel="stylesheet" href="/CSS/Profile.css">
 <?= $this->endSection() ?>
 
 <!-- Center of the Navbar, allows the user to return to homepage -->
 <?= $this->section('centerNav') ?>
-    <a href="<?= route_to('home.get'); ?>" class="home-link">← Back to Home</a>
+    <a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->

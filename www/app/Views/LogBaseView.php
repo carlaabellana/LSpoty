@@ -13,7 +13,7 @@
 
         <!--CSS styles that will be rendered in achild section-->
         <?= $this->renderSection('CSS') ?>
-        <link rel="stylesheet" href="/CSS/BaseView_Style.css">
+        <link rel="stylesheet" href="/CSS/BaseView.css">
         <?= $this->renderSection('JS') ?>
     </head>
     <body>

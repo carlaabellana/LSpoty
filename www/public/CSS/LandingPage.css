@@ -293,4 +293,17 @@ body {
         width: 80%;
         margin: 0 auto 1rem;
     }
+
+    .statistics,
+    .socialMedia-links,
+    .register-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .LSpoty-introduction-image {
+        margin: 0 auto;
+    }
 }

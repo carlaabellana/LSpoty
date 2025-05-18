@@ -5,12 +5,12 @@
 
 <!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
-<?= lang('landing.Landing')?> | LSpoty
+Landingpage | LSpoty
 <?= $this->endSection() ?>
 
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
-<link rel="stylesheet" href="/CSS/LandingPage_styles.css">
+<link rel="stylesheet" href="/CSS/LandingPage.css">
 <?= $this->endSection() ?>
 
 <!--Content we will render in the page html-->

@@ -9,6 +9,7 @@
     border-color: #b5828c;
 
 }
+
 form {
     display: flex;
     align-items: center;
@@ -277,5 +278,31 @@ button{
 }
 
 
+@media (max-width: 768px) {
+    #albums,
+    #artists,
+    #playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #albums div,
+    #artists div,
+    #playlists div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #searchBar {
+        max-width: 85%;
+        padding: 6px 10px;
+        border-radius: 15px;
+    }
+
+
+}
 
 
