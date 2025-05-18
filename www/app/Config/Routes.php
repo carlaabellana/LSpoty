@@ -61,6 +61,9 @@ $routes->post('/my-playlists/(:num)', 'MyPlaylistController::update/$1');
 $routes->get('/delete-playlist/(:num)', 'MyPlaylistController::delete/$1');
 //AJAX vista dinámica
 $routes->get('my-playlists/ajax/(:num)', 'MyPlaylistController::ajax/$1');
+//AJAX eliminar playlist
+$routes->delete('/my-playlists/(:num)', 'MyPlaylistController::delete/$1', ['as' => 'playlist.delete']);
+
 
 //Routes related to create a playlist and to save it into the DB.
 $routes->group('create-playlist', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {

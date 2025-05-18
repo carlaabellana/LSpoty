@@ -62,6 +62,7 @@ return [
     'home'             => 'Homepage',
     'save'             => 'Save playlist',
     'albums'           => 'Albums',
+    'delete'           => 'Delete',
 
     'del_playlist'     => 'Delete playlist',
     'update_playlist'  => 'Save',

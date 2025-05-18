@@ -1,11 +1,12 @@
 <!--This header will be shown to the registered users-->
-
 <!doctype html>
 <html lang="en">
     <head>
         <!--Basic metadata for characters & responsiveness-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="<?= csrf_hash() ?>">
+
 
         <!--Page title rendered in a child view section-->
         <title><?= $this->renderSection('title') ?></title>
@@ -13,6 +14,7 @@
         <!--CSS styles that will be rendered in achild section-->
         <?= $this->renderSection('CSS') ?>
         <link rel="stylesheet" href="/CSS/BaseView_Style.css">
+        <?= $this->renderSection('JS') ?>
     </head>
     <body>
 
