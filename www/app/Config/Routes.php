@@ -87,7 +87,7 @@ $routes->put('/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
 
 //AJAX to CREATE a playlist
 $routes->match(['put', 'post'], '/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
-$routes->get('/create-playlist', 'MyPlaylistController::createForm', ['as' => 'playlist.create']);
+$routes->get('/create-playlist', 'MyPlaylistController::createForm', ['as' => 'playlist.create', 'filter' => 'registeredAuth']);
 $routes->post('/create-playlist', 'MyPlaylistController::createForm', ['as' => 'playlist.create.post']);
 
 //Save a playlist from Jamendo.
