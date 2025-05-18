@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!btn) return;
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
+    console.log('Script cargado');
     btn.addEventListener('click', async () => {
+        console.log('Botón clicado');
+
         const id = btn.dataset.id;
         const name = btn.dataset.name;
         const cover = btn.dataset.cover;
@@ -13,6 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('playlist_name', name);
         formData.append('cover_url', cover);
         formData.append('is_external', 'true');
+
+        for (let pair of formData.entries()) {
+            console.log(`${pair[0]}: ${pair[1]}`);
+        }
 
         const response = await fetch(`/save-from-jamendo/${id}`, {
             method: 'POST',
