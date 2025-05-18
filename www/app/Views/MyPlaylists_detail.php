@@ -11,7 +11,7 @@
         <form action="<?= base_url('my-playlists/' . $playlist['id']) ?>" enctype="multipart/form-data" method="post" class="rename-form">
             <?= csrf_field() ?>
             <div class="form-image">
-                <label for="cover"><?= lang('HomePage.change_cover') ?></label>
+                <label for="cover"><?= lang('HomePage.p_form_img') ?></label>
                 <input type="file" name="cover" id="cover" accept="image/*" class="form-file" />
             </div>
             <input type="text" name="name" value="<?= esc($playlist['name']) ?>" class="playlist-name-input" />
