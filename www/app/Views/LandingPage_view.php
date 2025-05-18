@@ -1,3 +1,5 @@
+<!-- This HTML will be used to show the LANDING PAGE -->
+
 <!--Extending from BaseView contains the general elements of the file. For avoid repeating common elements trough pages-->
 <?= $this->extend('BaseView') ?>
 
