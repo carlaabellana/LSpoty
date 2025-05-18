@@ -89,4 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playlist.length > 0) {
         loadTrack(0);
     }
+
 });
