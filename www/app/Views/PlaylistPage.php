@@ -13,6 +13,11 @@
 <link rel="stylesheet" href="/CSS/PlaylistView.css">
 <?= $this->endSection() ?>
 
+<!--We link the JavaScript to format the page-->
+<?= $this->section('JS') ?>
+<script src="/JS/PlaylistPage.js"></script>
+<?= $this->endSection() ?>
+
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
 <a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
@@ -38,7 +43,13 @@
                 <p class="user-name"><strong><?= lang('HomePage.user')?></strong> <?= esc($playlist['playlist_user']) ?> </p>
                 <p><strong><?= lang('HomePage.creation')?></strong> <?= esc($playlist['playlist_creationDate']) ?> </p>
                 <p><strong><?= lang('HomePage.duration')?></strong> <?= esc($playlistDuration) ?></p>
-                <button type="button" class="add-playlist"><?= lang('HomePage.save')?></button>
+<!--                <button type="button" class="add-playlist">--><?php //= lang('HomePage.save')?><!--</button>-->
+                <button type="button" class="add-playlist"
+                        data-id="<?= esc($playlistId) ?>"
+                        data-name="<?= esc($playlist['playlist_title']) ?>"
+                        data-cover="<?= base_url('/IMAGES/playlistCover.jpg') ?>">
+                    <?= lang('HomePage.save') ?>
+                </button>
             </div>
         </section>
 

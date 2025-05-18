@@ -61,6 +61,6 @@ class PlaylistController extends BaseController
         $playlistDuration = ($playlistHours ? $playlistHours . 'h ' : '') . ($playlistMinutes ? $playlistMinutes . 'm ' : '') . $playlistSeconds . 's';
 
         //The view is returned with all the data collected and needed to show.
-        return view('PlaylistPage', ['playlist' => $playlistData, 'tracks' => $tracks, 'playlistDuration' => $playlistDuration, ]);
+        return view('PlaylistPage', ['playlist' => $playlistData, 'tracks' => $tracks, 'playlistDuration' => $playlistDuration,'playlistId' => $playlistId ]);
     }
 }

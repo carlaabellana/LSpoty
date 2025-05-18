@@ -74,7 +74,6 @@ class MyPlaylistController extends BaseController
         return $this->response->setJSON(['success' => true, 'message' => 'Playlist deleted']);
     }
 
-
     // dashboard dinámico
     public function ajax($id)
     {
@@ -97,6 +96,8 @@ class MyPlaylistController extends BaseController
 
         $playlistModel = new PlaylistModel();
         $userId = $session->get('user_id');
+
+        //Datos del formulario
         $playlistName = $this->request->getVar('playlist_name');
         $playlistImage = $this->request->getFile('playlist_image');
 
@@ -125,6 +126,42 @@ class MyPlaylistController extends BaseController
     {
         return view('CreatePlaylistPage');
     }
+    public function saveFromJamendo($id)
 
+    {
+        log_message('debug', 'SAVE JAMENDO: ' . json_encode($this->request->getVar()));
+
+        $session = session();
+
+        if (!$session->get('loggedIn')) {
+            return $this->response->setStatusCode(401)->setJSON(['error' => 'Unauthorized']);
+        }
+
+        $playlistModel = new PlaylistModel();
+        $userId = $session->get('user_id');
+
+        // Verificamos si la playlist ya está guardada
+        if ($playlistModel->find($id)) {
+            return $this->response->setJSON(['success' => true, 'message' => 'La playlist ya está guardada']);
+        }
+
+        $playlistName = $this->request->getVar('playlist_name');
+        $coverUrl = $this->request->getVar('cover_url');
+
+        if (empty($playlistName)) {
+            return $this->response->setStatusCode(422)->setJSON(['error' => 'El nombre es obligatorio']);
+        }
+
+        $coverPath = $coverUrl ?: 'IMAGES/playlistCover.jpg';
+
+        $playlistModel->insert([
+            'id' => $id,
+            'name' => $playlistName,
+            'cover' => $coverPath,
+            'user_id' => $userId
+        ]);
+
+        return $this->response->setJSON(['success' => true, 'message' => 'Playlist de Jamendo guardada correctamente']);
+    }
 
 }
