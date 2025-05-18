@@ -13,6 +13,10 @@
 <link rel="stylesheet" href="/CSS/CreatePlaylist_styles.css">
 <?= $this->endSection() ?>
 
+<?= $this->section('JS') ?>
+<script src="/JS/CreatePlaylist.js"></script>
+<?= $this->endSection() ?>
+
 <!--Center of the Navbar, allows the user to return to homepage-->
 <?= $this->section('centerNav') ?>
 <a href="<?= route_to('home.get'); ?>" class="home-link"><?= lang('homepage.return_home')?></a>
@@ -32,7 +36,7 @@
 
 <!--Here the form of the page will be displayed-->
 <main class="create-playlist-main">
-    <form id="createPlaylistForm" class="create-content" action="<?= route_to('playlist.store') ?>" method="post" enctype="multipart/form-data">
+    <form id="createPlaylistForm" class="create-content" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <article>
             <!--Elements of the form related to the title sending, input and errors-->

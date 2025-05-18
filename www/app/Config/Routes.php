@@ -65,11 +65,18 @@ $routes->get('my-playlists/ajax/(:num)', 'MyPlaylistController::ajax/$1');
 $routes->delete('/my-playlists/(:num)', 'MyPlaylistController::delete/$1', ['as' => 'playlist.delete']);
 
 
-//Routes related to create a playlist and to save it into the DB.
-$routes->group('create-playlist', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {
-    $routes->get('', 'CreatePlaylistController::create', ['as' => 'playlist.create']);
-    $routes->post('', 'CreatePlaylistController::store', ['as' => 'playlist.store']);
-});
+//Routes related to create a playlist and to save it into the DB. ->POST
+//$routes->group('create-playlist', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {
+//    $routes->get('', 'CreatePlaylistController::create', ['as' => 'playlist.create']);
+//    $routes->post('', 'CreatePlaylistController::store', ['as' => 'playlist.store']);
+//});
+$routes->put('/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
+
+//CREATE PLAYLIST AJAX
+$routes->match(['put', 'post'], '/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
+$routes->get('/create-playlist', 'MyPlaylistController::createForm', ['as' => 'playlist.create']);
+
+
 
 //External Library to add QR.
 $routes->get('/qr', 'QrController::index');

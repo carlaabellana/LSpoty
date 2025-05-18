@@ -87,5 +87,44 @@ class MyPlaylistController extends BaseController
         }
         return view('MyPlaylists_detail', ['playlist' => $playlist]);
     }
+    //Añadir playlist creada por nosotras
+    public function put($id)
+    {
+        $session = session();
+        if (!$session->get('loggedIn')) {
+            return $this->response->setStatusCode(401)->setJSON(['error' => 'Unauthorized']);
+        }
+
+        $playlistModel = new PlaylistModel();
+        $userId = $session->get('user_id');
+        $playlistName = $this->request->getVar('playlist_name');
+        $playlistImage = $this->request->getFile('playlist_image');
+
+        if (empty($playlistName)) {
+            return $this->response->setStatusCode(422)->setJSON(['error' => 'El nombre es obligatorio']);
+        }
+
+        if ($playlistImage && $playlistImage->isValid() && !$playlistImage->hasMoved()) {
+            $newName = $playlistImage->getRandomName();
+            $playlistImage->move(FCPATH . 'uploads', $newName);
+            $coverPath = $newName;
+        } else {
+            $coverPath = 'IMAGES/playlistCover.jpg';
+        }
+
+        $playlistModel->insert([
+            'id' => $id,
+            'name' => $playlistName,
+            'cover' => $coverPath,
+            'user_id' => $userId
+        ]);
+
+        return $this->response->setJSON(['success' => true, 'message' => 'Playlist creada']);
+    }
+    public function createForm()
+    {
+        return view('CreatePlaylistPage');
+    }
+
 
 }
