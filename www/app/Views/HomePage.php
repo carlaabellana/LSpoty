@@ -122,6 +122,6 @@
 
 <?= $this->endSection() ?>
 
-<?= $this->section('script') ?>
-    <script src="<?= base_url('JS/AddTrackPopUp.js') ?>')"
+<?= $this->section('scripts') ?>
+    <script src="<?= base_url('/JS/AddTrackPopUp.js') ?>"></script>
 <?= $this->endSection() ?>
