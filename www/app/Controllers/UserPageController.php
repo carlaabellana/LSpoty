@@ -43,10 +43,11 @@ class UserPageController extends BaseController {
      * Method that handles the form to edit the user data. Showing the corresponding errors. If there are not errors
      * the new info will be saved into the DB. The method manages the delete of the account.
      *
-     * @return \CodeIgniter\HTTP\RedirectResponse HTML view.
+     * @return \CodeIgniter\HTTP\RedirectResponse|string HTML view.
      * @throws \ReflectionException
      */
     public function profilePost() {
+        $errors = [];
         $session = session();
 
         //The user ID is collected  and the UserModel instantiated.
@@ -75,7 +76,11 @@ class UserPageController extends BaseController {
             }
 
             if (!empty($age)) {
-                $dataToUpdate['age'] = (int)$age;
+                if (!ctype_digit($age) || (int)$age < 1 || (int)$age > 100) {
+                    $errors['age'] = 'Edad no válida. Debe ser un número entero entre 1 y 100.';
+                } else {
+                    $dataToUpdate['age'] = (int)$age;
+                }
             }
 
             if ($profilePic && $profilePic->isValid() && !$profilePic->hasMoved()) {
@@ -84,10 +89,21 @@ class UserPageController extends BaseController {
                 $dataToUpdate['profile_pic'] = $newName;
             }
 
-            //The DB is updated with the new data.
-            $userModel->update($userId, $dataToUpdate);
+            if (!empty($errors)) {
+                $user = $userModel->find($userId);
+                return view('UserPage', [
+                    'userPage_data' => [
+                        'username'     => $user['username'],
+                        'email'        => $user['email'],
+                        'age'          => $user['age'],
+                        'profile_pic'  => $user['profile_pic'],
+                    ],
+                    'editUserMode' => true,
+                    'errors' => $errors,
+                ]);
+            }
 
-            //Redirection to the profile page.
+            $userModel->update($userId, $dataToUpdate);
             return redirect()->route('profile.get');
         }
 
