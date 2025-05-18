@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Entities\Track;
 use App\Models\PlaylistModel;
 use App\Models\TrackModel;
-use CodeIgniter\Controller;
 use App\Models\UserModel;
 use GuzzleHttp\Client;
 
@@ -159,6 +158,11 @@ class MyPlaylistController extends BaseController
         return $this->response->setJSON(['success' => true, 'message' => 'Playlist de Jamendo guardada correctamente']);
     }
 
+    /**********************
+     * adds a track to the asigned playlist
+     * @param $idPlaylist: id of the playlist where we want to save
+     * @param $idTrack: id of the track we want to save
+     */
     public function addTrack($idPlaylist, $idTrack){
         $data = json_decode($this->request->getBody(), true)??[];
         $track = new TrackModel();
@@ -181,9 +185,6 @@ class MyPlaylistController extends BaseController
         ];
 
         $track->insert($trak);
-
-        echo '<div>plz help</div>';
-        echo "<script>console.log('test' );</script>";
 
         return $this->response->setStatusCode(200)->setJson(['responseData' => 'All es gut']);
     }

@@ -70,4 +70,7 @@ return [
     'tracks'           => 'Canciones',
     'change_cover'     => 'Cambiar foto de portada ',
 
+    //popUp
+    'add_to_playlist'  => 'Guarda en tus playlists',
+    'save_track'       => 'Guardar',
 ];

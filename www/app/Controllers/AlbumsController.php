@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Entities\Album;
-use App\Entities\Track;
 
 use App\Models\PlaylistModel;
 use GuzzleHttp\Client;
@@ -15,7 +14,7 @@ use GuzzleHttp\Client;
 class AlbumsController extends BaseController
 {
     /**
-     * Method that displays an specific album and the tracks it contains.
+     * Method that displays a specific album and the tracks it contains.
      *
      * @param $albumId ID of the album obtained from Jamendo API.
      * @return string HTTP response.

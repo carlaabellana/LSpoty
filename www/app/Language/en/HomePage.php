@@ -70,4 +70,7 @@ return [
     'tracks'           => 'Tracks',
     'change_cover'     => 'Change cover',
 
+    //popUp
+    'add_to_playlist'  => 'Add to your playlist',
+    'save_track'       => 'Save',
 ];

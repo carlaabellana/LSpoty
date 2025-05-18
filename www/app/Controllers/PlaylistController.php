@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Entities\Album;
 use App\Entities\Track;
 
 use App\Models\PlaylistModel;

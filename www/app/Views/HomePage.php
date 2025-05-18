@@ -37,6 +37,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+    <!--generate view for searchs with no filter-->
     <?php
     if ($type === '') {
         if ($albums !== []) {
@@ -86,6 +87,7 @@
 
     } elseif ($type !== 'track') {
         if ($results !== []) {
+            // generate the view for non-empty results that are filtered (except tracks)
             echo '<div id = "'.$type.'s">'.'<h3>'.lang("Homepage.SearchMessage").'</h3> <div>';
             foreach ($results as $result) {
                 if (!isset($result["image"]) || ($result["image"] === "" && $type === "track")) {
@@ -106,6 +108,7 @@
             echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3> ';
         }
     } else {
+        // generate the view for non-empty results that are filtered as tracks
         if ($results !== []) {
             echo '<div id = "'.$type.'s">'.'<h3>'.lang("Homepage.TracksMessage").'</h3> <div>';
             foreach ($results as $track) {
@@ -115,10 +118,12 @@
             echo '<h3>'.lang("Homepage.NoResultsMessage").'</h3>';
         }
     }
+    //include the popUp view
     include("AddTrackPopUp.php");
     ?>
 <?= $this->endSection() ?>
 
+<!--Script to add the ajax-->
 <?= $this->section('scripts') ?>
     <script src="<?= base_url('/JS/AddTrackPopUp.js') ?>"></script>
 <?= $this->endSection() ?>

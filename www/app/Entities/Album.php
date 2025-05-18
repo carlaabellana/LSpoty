@@ -26,6 +26,10 @@ class Album extends Entity
         'total_duration' => 'integer',
     ];
 
+    /**************************
+     * Takes the month from release date returns the month in the correct language
+     * @return string:month in correct language
+     */
     public function monthLanguage(): string
     {
         $dateAlbum = $this->release_date;
@@ -34,6 +38,11 @@ class Album extends Entity
 
         return lang("homepage.month_{$monthAlbum}");
     }
+
+    /*******************************
+     * Converts the given duration to a min/hour/sec format
+     * @return string:final form of duration
+     */
     public function getFormatDuration(): string
     {
         $seconds = $this->total_duration;
@@ -44,6 +53,10 @@ class Album extends Entity
         return sprintf('%02d:%02d:%02d', $albumHours, $albumMinutes, $albumSeconds);
     }
 
+    /********************************************
+     * Constructs a new Album
+     * @param array|null $data: information
+     */
     public function __construct(array $data = null) {
         parent::__construct();
         $this->id = $data['id'] ?? '0';
@@ -64,31 +77,13 @@ class Album extends Entity
 
     }
 
-//    public function getId() : string {
-//        return $this->id;
-//    }
-//
-//    public function getName() {
-//        return $this->name;
-//    }
-//    public function getCover() {
-//        return $this->cover;
-//    }
-//    public function getArtist() {
-//        return $this->artist;
-//    }
-//    public function getArtistId() {
-//        return $this->artistId;
-//    }
-//    public function getReleaseDate() {
-//        return $this->release_date;
-//    }
-
-
+    /*************************
+     * Returns a view with all the tracks automatically made
+     * @return string: view
+     */
     public function generateTrackView(): string {
-        $view = '<div style="background-color: #dd4814"> ';
+        $view = '<div> ';
         foreach ($this->tracks as $track) {
-            //$view = $view . $track->generateView('album');
             $view .= $track->generateView('album');
         }
         $view = $view . '</div>';

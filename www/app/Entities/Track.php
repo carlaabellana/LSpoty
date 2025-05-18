@@ -41,6 +41,11 @@ class Track extends Entity
         'playerURL' => 'player_url',
     ];
 
+    /*************************+
+     * constructs the Track
+     * @param array|null $data: data needed for the track
+     * @param string $type
+     */
     public function __construct(array $data = null, string $type = 'tracks'){
         parent::__construct();
         if ($type === 'tracks'){
@@ -64,10 +69,20 @@ class Track extends Entity
         }
     }
 
+    /************************************
+     * sets cover for the tracks in albums
+     * @param string $cover: new cover
+     * @return void
+     */
     public function setCover(string $cover){
         $this->cover = $cover;
     }
 
+    /*********************************
+     * Generates the view of a track
+     * @param string $type: generates different variants of the track depending on the type of show
+     * @return string: the view
+     */
     public function generateView(string $type = "album"):string{
         $ImageCover = esc($this->cover);
 

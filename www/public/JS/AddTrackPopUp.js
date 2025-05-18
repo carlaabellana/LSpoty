@@ -1,7 +1,7 @@
+
+//ajax put function
 $(document).ready(function() {
     $('#playlists').submit(function(event) {
-        console.log("AAAAAAAAAAAAAAAAAAA");
-
         event.preventDefault();
         let payload = {
             idTrack: $('input[name=trackId]').val(),
@@ -34,7 +34,7 @@ $(document).ready(function() {
     });
 });
 
-
+//shows the popup and assigns the correct track id
 function openPopUp(trackID){
     let popup = document.getElementById("popUp");
     popup.classList.remove("popUp-close");
@@ -42,6 +42,8 @@ function openPopUp(trackID){
     let trackId = document.getElementById("trackId");
     trackId.value = trackID;
 }
+
+//hides the popup
 function closePopUp(){
     let popup = document.getElementById("popUp");
     popup.classList.remove("popUp-open")

@@ -7,7 +7,7 @@ use App\Models\UserModel;
 /**
  * controller that manages showing the user profile and controls the form. If the user wants to edit its data this
  * controller manages the form and its errors. If all is a success the new data will be stored into the DB. We also
- * manage the delete of the account.
+ * manage deleting the account.
  */
 class UserPageController extends BaseController {
 
