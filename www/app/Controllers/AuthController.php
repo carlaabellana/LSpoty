@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use CodeIgniter\Controller;
 
 /**
  * Controller that handles the sign in and login of the user. It handles the corresponding forms and errors. If the user

@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use CodeIgniter\Controller;
 
 /**
  * controller that manages showing the user profile and controls the form. If the user wants to edit its data this
