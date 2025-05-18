@@ -29,16 +29,17 @@ class MyPlaylistController extends BaseController
 
         return view('MyPlaylists', ['playlists' => $playlists]);
     }
+
     public function update($id)
     {
         $playlistModel = new PlaylistModel();
 
         $retrievedData = [
-            'name'  => $this->request->getPost('name'),
+            'name' => $this->request->getPost('name'),
         ];
 
         $file = $this->request->getFile('cover');
-        if ($file && $file->isValid() && ! $file->hasMoved()) {
+        if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
             $file->move(FCPATH . 'uploads', $newName);
 
@@ -49,6 +50,8 @@ class MyPlaylistController extends BaseController
 
         return redirect()->to('/my-playlists')->with('success', 'Playlist updated');
     }
+
+
     public function delete($id)
     {
         $session = session();
@@ -81,6 +84,7 @@ class MyPlaylistController extends BaseController
         }
         return view('MyPlaylists_detail', ['playlist' => $playlist]);
     }
+
 //Añadir playlist creada por nosotras
     public function put($id)
     {
@@ -117,10 +121,13 @@ class MyPlaylistController extends BaseController
 
         return $this->response->setJSON(['success' => true, 'message' => 'Playlist creada']);
     }
+
     public function createForm()
     {
         return view('CreatePlaylistPage');
     }
+
+
     public function saveFromJamendo($id)
 
     {
@@ -155,19 +162,43 @@ class MyPlaylistController extends BaseController
             'cover' => $coverPath,
             'user_id' => $userId
         ]);
+
+        $client = new Client();
+        $apiUrl = "https://api.jamendo.com/v3.0/playlists/tracks/?client_id=9d42fee4&id=" . $id;
+        $response = $client->request('GET', $apiUrl);
+        $body = json_decode($response->getBody(), true);
+
+        foreach ($body['results'][0]['tracks'] as $track) {
+            $this->addTrackTo($id, $track['id']);
+        }
+
         return $this->response->setJSON(['success' => true, 'message' => 'Playlist de Jamendo guardada correctamente']);
     }
 
     /**********************
      * adds a track to the asigned playlist
-     * @param $idPlaylist: id of the playlist where we want to save
-     * @param $idTrack: id of the track we want to save
+     * @param $idPlaylist : id of the playlist where we want to save
+     * @param $idTrack : id of the track we want to save
      */
-    public function addTrack($idPlaylist, $idTrack){
-        $data = json_decode($this->request->getBody(), true)??[];
+    public function addTrack($idPlaylist, $idTrack)
+    {
+        $data = json_decode($this->request->getBody(), true) ?? [];
+        $this->addTrackTo($idPlaylist, $idTrack);
+        return $this->response->setStatusCode(200)->setJson(['responseData' => 'All es gut']);
+    }
+
+    /*************************************
+     * adds a track to the database
+     * @param $idPlaylist
+     * @param $idTrack
+     * @return void
+     */
+    public function addTrackTo($idPlaylist, $idTrack):void
+    {
         $track = new TrackModel();
+        $playlistModel = new PlaylistModel();
         $client = new Client();
-        $apiUrl = "https://api.jamendo.com/v3.0/tracks/?client_id=9d42fee4&id=".$idTrack;
+        $apiUrl = "https://api.jamendo.com/v3.0/tracks/?client_id=9d42fee4&id=" . $idTrack;
         $response = $client->request('GET', $apiUrl);
         $body = json_decode($response->getBody(), true);
         $newTrack = new Track($body['results'][0]);
@@ -180,13 +211,15 @@ class MyPlaylistController extends BaseController
             'album_name' => $newTrack->album,
             'album_id' => $newTrack->albumId,
             'duration' => $newTrack->duration,
-            'player_url' =>$newTrack->playerURL,
+            'player_url' => $newTrack->playerURL,
             'playlist_id' => $idPlaylist,
         ];
 
-        $track->insert($trak);
-
-        return $this->response->setStatusCode(200)->setJson(['responseData' => 'All es gut']);
+        $reply = $track->where('id', $idTrack)->findAll();
+        $reply2 = $playlistModel->where('id', $idPlaylist)->findAll();
+        if (count($reply) === 0 && count($reply2) !== 0) {
+            $track->insert($trak);
+        }
     }
 
     public function concrete($id) {
@@ -243,5 +276,4 @@ class MyPlaylistController extends BaseController
 
         return view('MyPlaylistsView', $data);
     }
-
 }
