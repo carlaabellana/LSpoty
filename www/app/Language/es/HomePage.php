@@ -68,4 +68,6 @@ return [
     'update_playlist'  => 'Guardar',
     'song-soon'        => '♫ Canciones muy pronto… ',
     'tracks'           => 'Canciones',
+    'change_cover'     => 'Cambiar foto de portada ',
+
 ];

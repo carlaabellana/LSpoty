@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('playlist-detail').innerHTML = html;
 
                     // Cargar CSS
-                    if (!document.querySelector('link[href="/CSS/MyPlaylists_detail_styles.css"]')) {
+                    if (!document.querySelector('link[href="/CSS/Playlists_detail_style.css"]')) {
                         const link = document.createElement('link');
                         link.rel = 'stylesheet';
-                        link.href = '/CSS/MyPlaylists_detail_styles.css';
+                        link.href = '/CSS/Playlists_detail_style.css';
                         document.head.appendChild(link);
                     }
 

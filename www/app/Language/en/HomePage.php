@@ -68,5 +68,6 @@ return [
     'update_playlist'  => 'Save',
     'song-soon'        => '♫ Tracks coming soon… ',
     'tracks'           => 'Tracks',
+    'change_cover'     => 'Change cover',
 
 ];

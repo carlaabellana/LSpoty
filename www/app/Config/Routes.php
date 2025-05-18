@@ -54,7 +54,7 @@ $routes->group('playlist/(:num)', ['namespace' => 'App\Controllers', 'filter' =>
 //My playlists
 $routes->get('/my-playlists', 'MyPlaylistController::index', ['as' => 'my-playlists.index']);
 //Ver una playlist en concreto
-$routes->get('/my-playlists/(:num)', 'MyPlaylistController::show/$1');
+
 //Editar una playlist
 $routes->post('/my-playlists/(:num)', 'MyPlaylistController::update/$1');
 

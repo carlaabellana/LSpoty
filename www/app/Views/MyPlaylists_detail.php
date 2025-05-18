@@ -17,8 +17,7 @@
             <input type="text" name="name" value="<?= esc($playlist['name']) ?>" class="playlist-name-input" />
             <button type="submit" class="save-btn"><?= lang('HomePage.update_playlist')?></button>
         </form>
-
-        <button id="delete-playlist-btn" data-id="<?= $playlist['id'] ?>" class="btn btn-danger"><?= lang('homepage.delete') ?>
+        <button id="delete-playlist-btn" data-id="<?= $playlist['id'] ?>" class="delete-btn"><?= lang('homepage.delete') ?>
         </button>
     </div>
 </div>
