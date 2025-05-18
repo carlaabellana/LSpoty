@@ -61,7 +61,7 @@ return [
     'p_form_img'       => 'Introduce una imagen: ',
     'home'             => 'Principal',
     'save'             => 'Guardar lista',
-    'albums'           => 'Álbunes',
+    'albums'           => 'Álbumes',
     'delete'           => 'Eliminar',
 
     'del_playlist'     => 'Borrar Lista',

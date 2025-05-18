@@ -13,7 +13,7 @@
                 }?>
                 </select>
             </div>
-            <button type="submit" >Save</button>
+            <button type="submit" onclick="closePopUp()">Save</button>
         </form>
         <div id="response"></div>
     </div>

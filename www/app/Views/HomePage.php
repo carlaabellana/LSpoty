@@ -5,7 +5,7 @@
 
 <!--Title of the page will appear on the navbar-->
 <?= $this->section('title') ?>
-Homepage | LSpoty
+    Homepage | LSpoty
 <?= $this->endSection() ?>
 
 <!-- Center of the Navbar, allows the user to return to homepage -->

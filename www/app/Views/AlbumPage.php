@@ -11,6 +11,8 @@
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
 <link rel="stylesheet" href="/CSS/Album.css">
+<link rel="stylesheet" href="/CSS/PopUpTrack.css">
+
 <?= $this->endSection() ?>
 
 <!--Center of the Navbar, allows the user to return to homepage-->
@@ -77,4 +79,11 @@
         </article>
     </article>
 </main>
+
+<?= include("AddTrackPopUp.php"); ?>
+
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+    <script src="<?= base_url('/JS/AddTrackPopUp.js') ?>"></script>
 <?= $this->endSection() ?>

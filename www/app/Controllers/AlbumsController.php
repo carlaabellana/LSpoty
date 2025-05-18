@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Entities\Album;
 use App\Entities\Track;
 
+use App\Models\PlaylistModel;
 use GuzzleHttp\Client;
 
 /**
@@ -43,7 +44,13 @@ class AlbumsController extends BaseController
         $albumData = $body['results'][0];
         $albumEntity = new Album($albumData);
 
+        //Reading the names and ids of the user's playlist
+        $session = session();
+        $playlistsModel = new PlaylistModel();
+        $names = $playlistsModel->where('user_id', $session->get('user_id'))->findColumn('name');
+        $ids = $playlistsModel->where('user_id', $session->get('user_id'))->findColumn('id');
+
         //The AlbumPage view ir rendered with the Album entity data.
-        return view('AlbumPage', ['album' => $albumEntity]);
+        return view('AlbumPage', ['album' => $albumEntity, 'PlaylistNames' => $names, 'PlaylistIds' => $ids]);
     }
 }

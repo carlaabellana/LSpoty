@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Entities\Album;
 use App\Entities\Track;
 
+use App\Models\PlaylistModel;
 use GuzzleHttp\Client;
 
 /**
@@ -60,7 +61,14 @@ class PlaylistController extends BaseController
         $playlistSeconds = $seconds % 60;
         $playlistDuration = ($playlistHours ? $playlistHours . 'h ' : '') . ($playlistMinutes ? $playlistMinutes . 'm ' : '') . $playlistSeconds . 's';
 
+        //Reading the names and ids of the user's playlist
+        $session = session();
+        $playlistsModel = new PlaylistModel();
+        $names = $playlistsModel->where('user_id', $session->get('user_id'))->findColumn('name');
+        $ids = $playlistsModel->where('user_id', $session->get('user_id'))->findColumn('id');
+
+
         //The view is returned with all the data collected and needed to show.
-        return view('PlaylistPage', ['playlist' => $playlistData, 'tracks' => $tracks, 'playlistDuration' => $playlistDuration,'playlistId' => $playlistId ]);
+        return view('PlaylistPage', ['playlist' => $playlistData, 'tracks' => $tracks, 'playlistDuration' => $playlistDuration,'playlistId' => $playlistId , 'PlaylistNames' => $names, 'PlaylistIds' => $ids]);
     }
 }

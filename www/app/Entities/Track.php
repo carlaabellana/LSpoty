@@ -78,7 +78,11 @@ class Track extends Entity
         <div class="infoSpace">
             <p>'.$this->name.'</p>';
         if ($type === 'playlist') {
-            $view .= '<div class="info"><p>' . $this->artist . '</p><p>'.$this->album.'</p></div>';
+            $view .= '<div class="info">
+                <a href="'.base_url("/artist/".$this->artistId).'">'
+                . $this->artist . '</a>
+                <a href="'.base_url("/album/".$this->albumId).'">'
+                .$this->album.'</a></div>';
         }
         $view .= '</div>';
         if ($type !== 'myPlaylist') {

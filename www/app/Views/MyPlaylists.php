@@ -12,7 +12,7 @@
 <?= $this->endSection() ?>
 
 <!--We link the JavaScript to format the page-->
-<?= $this->section('JS') ?>
+<?= $this->section('scripts') ?>
 <script src="/JS/MyPlaylists.js"></script>
 <?= $this->endSection() ?>
 

@@ -11,11 +11,14 @@
 <!--We link the CSS to format the page-->
 <?= $this->section('CSS') ?>
 <link rel="stylesheet" href="/CSS/PlaylistView.css">
+<link rel="stylesheet" href="/CSS/PopUpTrack.css">
+
 <?= $this->endSection() ?>
 
 <!--We link the JavaScript to format the page-->
-<?= $this->section('JS') ?>
+<?= $this->section('scripts') ?>
 <script src="/JS/PlaylistPage.js"></script>
+<script src="<?= base_url('/JS/AddTrackPopUp.js') ?>"></script>
 <?= $this->endSection() ?>
 
 <!--Center of the Navbar, allows the user to return to homepage-->
@@ -69,4 +72,6 @@
         </section>
     </article>
 </main>
+<?= include("AddTrackPopUp.php"); ?>
+
 <?= $this->endSection() ?>

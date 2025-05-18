@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/CSS/CreatePlaylist_styles.css">
 <?= $this->endSection() ?>
 
-<?= $this->section('JS') ?>
+<?= $this->section('scripts') ?>
 <script src="/JS/CreatePlaylist.js"></script>
 <?= $this->endSection() ?>
 
