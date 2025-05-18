@@ -35,10 +35,10 @@ class Track extends Entity
         'cover' => 'image',
         'artist' => 'artist_name',
         'artistId' => 'artist_id',
-        'album' => 'album',
+        'album' => 'album_name',
         'albumId' => 'album_id',
         'duration' => 'duration',
-        'playerURL' => 'audio',
+        'playerURL' => 'player_url',
     ];
 
     public function __construct(array $data = null, string $type = 'tracks'){
@@ -49,10 +49,13 @@ class Track extends Entity
             $this->cover = $data['image'] ?? null;
             $this->artist = $data['artist_name'] ?? null;
             $this->artistId = $data['artist_id'] ?? null;
-            $this->album = $data['album'] ?? null;
+            $this->album = $data['album_name'] ?? null;
             $this->albumId = $data['album_id'] ?? null;
             $this->duration = $data['duration'] ?? null;
             $this->playerURL = $data['audio'] ?? null;
+            if ($this->album === ""){
+                $this->album = "unknown";
+            }
         } elseif($type === 'album') {
             $this->id = $data['id'] ?? null;
             $this->name = $data['name'] ?? null;
@@ -83,7 +86,7 @@ class Track extends Entity
                 <audio>
                     <source src="'.$this->playerURL.'" type = "audio/mpeg">
                 </audio>
-            </div> <button type="button" class="add" onclick="openPopUp()">+</button>';
+            </div> <button type="button" class="add" onclick="openPopUp('.$this->id.')">+</button>';
         }
         $view .= '</div>';
         return $view;

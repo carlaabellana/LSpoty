@@ -117,9 +117,6 @@ Homepage | LSpoty
     }
     include("AddTrackPopUp.php");
     ?>
-
-
-
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>

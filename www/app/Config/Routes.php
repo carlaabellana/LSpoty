@@ -51,6 +51,7 @@ $routes->group('playlist/(:num)', ['namespace' => 'App\Controllers', 'filter' =>
     $routes->post('', 'PlaylistController::show/$1', ['as' => 'playlist.post']);
 });
 
+
 //My playlists
 $routes->get('/my-playlists', 'MyPlaylistController::index', ['as' => 'my-playlists.index']);
 //Ver una playlist en concreto
@@ -63,6 +64,26 @@ $routes->get('my-playlists/ajax/(:num)', 'MyPlaylistController::ajax/$1');
 
 //AJAX eliminar playlist
 $routes->delete('/my-playlists/(:num)', 'MyPlaylistController::delete/$1', ['as' => 'playlist.delete']);
+
+$routes->put('/my-playlists/(:any)/track/(:any)', 'MyPlaylistController::addTrack/$1/$2');
+
+
+$routes->group('/my-playlists', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {
+    $routes->get('', 'MyPlaylistController::index', ['as' => 'my-playlists.index']);
+    $routes->get('/(:num)', 'MyPlaylistController::show/$1');
+    $routes->post('/(:num)', 'MyPlaylistController::update/$1');
+    $routes->get('/ajax/(:num)', 'MyPlaylistController::ajax/$1');
+    $routes->delete('/(:num)', 'MyPlaylistController::delete/$1', ['as' => 'playlist.delete']);
+});
+
+//$routes->put()
+
+//Routes related to create a playlist and to save it into the DB. ->POST
+//$routes->group('create-playlist', ['namespace' => 'App\Controllers', 'filter' => 'registeredAuth'], function ($routes) {
+//    $routes->get('', 'CreatePlaylistController::create', ['as' => 'playlist.create']);
+//    $routes->post('', 'CreatePlaylistController::store', ['as' => 'playlist.store']);
+//});
+$routes->put('/my-playlists/(:segment)', 'MyPlaylistController::put/$1');
 
 //CREATE PLAYLIST AJAX
 $routes->match(['put', 'post'], '/my-playlists/(:segment)', 'MyPlaylistController::put/$1');

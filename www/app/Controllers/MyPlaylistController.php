@@ -2,9 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Entities\Track;
 use App\Models\PlaylistModel;
+use App\Models\TrackModel;
 use CodeIgniter\Controller;
 use App\Models\UserModel;
+use GuzzleHttp\Client;
 
 
 class MyPlaylistController extends BaseController
@@ -154,6 +157,35 @@ class MyPlaylistController extends BaseController
             'user_id' => $userId
         ]);
         return $this->response->setJSON(['success' => true, 'message' => 'Playlist de Jamendo guardada correctamente']);
+    }
+
+    public function addTrack($idPlaylist, $idTrack){
+        $data = json_decode($this->request->getBody(), true)??[];
+        $track = new TrackModel();
+        $client = new Client();
+        $apiUrl = "https://api.jamendo.com/v3.0/tracks/?client_id=9d42fee4&id=".$idTrack;
+        $response = $client->request('GET', $apiUrl);
+        $body = json_decode($response->getBody(), true);
+        $newTrack = new Track($body['results'][0]);
+        $trak = [
+            'id' => $newTrack->id,
+            'name' => $newTrack->name,
+            'cover' => $newTrack->cover,
+            'artist_name' => $newTrack->artist,
+            'artist_id' => $newTrack->artistId,
+            'album_name' => $newTrack->album,
+            'album_id' => $newTrack->albumId,
+            'duration' => $newTrack->duration,
+            'player_url' =>$newTrack->playerURL,
+            'playlist_id' => $idPlaylist,
+        ];
+
+        $track->insert($trak);
+
+        echo '<div>plz help</div>';
+        echo "<script>console.log('test' );</script>";
+
+        return $this->response->setStatusCode(200)->setJson(['responseData' => 'All es gut']);
     }
 
 }

@@ -4,17 +4,17 @@
             <h3>Add to your playlists</h3>
             <button type="button" onclick="closePopUp()"> x </button>
         </div>
-        <form id="playlists" action="<?= site_url("my-playlists/")?>" method="PUT">
+        <form id="playlists" >
             <div id="playlistsNames">
-                <select>
+                <input type="hidden" name="trackId" id="trackId">
+                <select  name="playlist">
                 <?php foreach($PlaylistNames as $key => $name){
-                    echo '<option name="playlist" value="'.$key.'">'.$name.'</option>';
-//                    echo '<div><label>'.$name.'</label>';
-//                    echo '<input type="checkbox" name="selected_playlists" value="'.$PlaylistIds[$key].'"></div>';
+                    echo '<option value="'.$PlaylistIds[$key].'">'.$name. $PlaylistIds[$key].'</option>';
                 }?>
                 </select>
             </div>
-            <button type="submit" onclick="closePopUp()">Save</button>
+            <button type="submit" >Save</button>
         </form>
+        <div id="response"></div>
     </div>
 </div>
