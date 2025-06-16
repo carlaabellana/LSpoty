@@ -30,11 +30,11 @@ LSpoty is your ultimate destination for discovering and enjoying music like neve
 - CodeIgniter 4
 - MySQL
 - Guzzle (API requests)
-- 
+
 **Frontend:**
 - HTML5/CSS3/JS
 - CodeIgniter Templates
-- 
+
 **Infrastructure:**
 - Docker
 - Nginx
